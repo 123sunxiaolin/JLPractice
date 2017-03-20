@@ -1,0 +1,7 @@
+platform :ios, '7.0'
+
+target 'JLMasonryPractice' do
+    
+#Autolayout布局库
+pod 'Masonry', '~> 1.0.2'
+end
