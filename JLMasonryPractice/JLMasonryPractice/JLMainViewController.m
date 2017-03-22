@@ -10,6 +10,7 @@
 #import "JLDisplayViewController.h"
 #import "JLMainView.h"
 #import "JLUpdateConstantView.h"
+#import "JLQueueSyncView.h"
 #import <Masonry.h>
 
 @interface JLMainViewController ()<UITableViewDelegate, UITableViewDataSource>{
@@ -35,12 +36,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _masFuncArray = @[@"基础使用", @"改变/重置约束"];
+    _masFuncArray = @[@"基础使用", @"改变/重置约束", @"线程同步操作"];
     _masViewControllerArray = @[
                                 [[JLDisplayViewController alloc] initWithTitle:@"基础"
                                                                      viewClass:[JLMainView class]],
                                 [[JLDisplayViewController alloc] initWithTitle:@"约束变更"
-                                                                     viewClass:[JLUpdateConstantView class]]
+                                                                     viewClass:[JLUpdateConstantView class]],
+                                [[JLDisplayViewController alloc] initWithTitle:@"同步操作"
+                                                                     viewClass:[JLQueueSyncView class]]
                                 
                                 ];
     [self.view addSubview:self.mainTableView];

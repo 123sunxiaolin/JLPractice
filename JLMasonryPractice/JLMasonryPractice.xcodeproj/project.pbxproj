@@ -10,15 +10,14 @@
 		C9599B3C1E7F865B00F896BD /* JLUpdateConstantView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9599B3B1E7F865B00F896BD /* JLUpdateConstantView.m */; };
 		C9C00A181E7BB0EF000E57E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C00A171E7BB0EF000E57E5 /* main.m */; };
 		C9C00A1B1E7BB0EF000E57E5 /* JLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C00A1A1E7BB0EF000E57E5 /* JLAppDelegate.m */; };
-		C9C00A211E7BB0EF000E57E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C00A1F1E7BB0EF000E57E5 /* Main.storyboard */; };
 		C9C00A231E7BB0EF000E57E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C00A221E7BB0EF000E57E5 /* Assets.xcassets */; };
-		C9C00A261E7BB0EF000E57E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C00A241E7BB0EF000E57E5 /* LaunchScreen.storyboard */; };
 		C9C00A311E7BB0EF000E57E5 /* JLMasonryPracticeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C00A301E7BB0EF000E57E5 /* JLMasonryPracticeTests.m */; };
 		C9C00A3C1E7BB0EF000E57E5 /* JLMasonryPracticeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C00A3B1E7BB0EF000E57E5 /* JLMasonryPracticeUITests.m */; };
 		C9C00A4B1E7BB3C1000E57E5 /* JLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C00A4A1E7BB3C1000E57E5 /* JLMainViewController.m */; };
 		C9C00A4E1E7BB4B7000E57E5 /* JLMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C00A4D1E7BB4B7000E57E5 /* JLMainView.m */; };
 		C9C00A511E7BBD9B000E57E5 /* JLDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C00A501E7BBD9B000E57E5 /* JLDisplayViewController.m */; };
 		DCDC89F4C8C70C542D03599F /* libPods-JLMasonryPractice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6606D39A1BA39ACB1118BD67 /* libPods-JLMasonryPractice.a */; };
+		DD51976F1E82BEBD0073C783 /* JLQueueSyncView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD51976E1E82BEBD0073C783 /* JLQueueSyncView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,9 +46,7 @@
 		C9C00A171E7BB0EF000E57E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C9C00A191E7BB0EF000E57E5 /* JLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JLAppDelegate.h; sourceTree = "<group>"; };
 		C9C00A1A1E7BB0EF000E57E5 /* JLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JLAppDelegate.m; sourceTree = "<group>"; };
-		C9C00A201E7BB0EF000E57E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9C00A221E7BB0EF000E57E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C9C00A251E7BB0EF000E57E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9C00A271E7BB0EF000E57E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9C00A2C1E7BB0EF000E57E5 /* JLMasonryPracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLMasonryPracticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C00A301E7BB0EF000E57E5 /* JLMasonryPracticeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JLMasonryPracticeTests.m; sourceTree = "<group>"; };
@@ -63,6 +60,8 @@
 		C9C00A4D1E7BB4B7000E57E5 /* JLMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLMainView.m; sourceTree = "<group>"; };
 		C9C00A4F1E7BBD9B000E57E5 /* JLDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLDisplayViewController.h; sourceTree = "<group>"; };
 		C9C00A501E7BBD9B000E57E5 /* JLDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLDisplayViewController.m; sourceTree = "<group>"; };
+		DD51976D1E82BEBD0073C783 /* JLQueueSyncView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLQueueSyncView.h; sourceTree = "<group>"; };
+		DD51976E1E82BEBD0073C783 /* JLQueueSyncView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLQueueSyncView.m; sourceTree = "<group>"; };
 		E10FDC41F66A9CA602E9EA7A /* Pods-JLMasonryPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLMasonryPractice.release.xcconfig"; path = "Pods/Target Support Files/Pods-JLMasonryPractice/Pods-JLMasonryPractice.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,9 +137,7 @@
 				C9C00A1A1E7BB0EF000E57E5 /* JLAppDelegate.m */,
 				C9C00A521E7BBEAA000E57E5 /* Controllers */,
 				C9C00A531E7BBEBD000E57E5 /* View */,
-				C9C00A1F1E7BB0EF000E57E5 /* Main.storyboard */,
 				C9C00A221E7BB0EF000E57E5 /* Assets.xcassets */,
-				C9C00A241E7BB0EF000E57E5 /* LaunchScreen.storyboard */,
 				C9C00A271E7BB0EF000E57E5 /* Info.plist */,
 				C9C00A161E7BB0EF000E57E5 /* Supporting Files */,
 			);
@@ -191,6 +188,8 @@
 				C9C00A4D1E7BB4B7000E57E5 /* JLMainView.m */,
 				C9599B3A1E7F865B00F896BD /* JLUpdateConstantView.h */,
 				C9599B3B1E7F865B00F896BD /* JLUpdateConstantView.m */,
+				DD51976D1E82BEBD0073C783 /* JLQueueSyncView.h */,
+				DD51976E1E82BEBD0073C783 /* JLQueueSyncView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -304,9 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9C00A261E7BB0EF000E57E5 /* LaunchScreen.storyboard in Resources */,
 				C9C00A231E7BB0EF000E57E5 /* Assets.xcassets in Resources */,
-				C9C00A211E7BB0EF000E57E5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9C00A1B1E7BB0EF000E57E5 /* JLAppDelegate.m in Sources */,
+				DD51976F1E82BEBD0073C783 /* JLQueueSyncView.m in Sources */,
 				C9599B3C1E7F865B00F896BD /* JLUpdateConstantView.m in Sources */,
 				C9C00A181E7BB0EF000E57E5 /* main.m in Sources */,
 				C9C00A511E7BBD9B000E57E5 /* JLDisplayViewController.m in Sources */,
@@ -418,25 +416,6 @@
 			targetProxy = C9C00A381E7BB0EF000E57E5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		C9C00A1F1E7BB0EF000E57E5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9C00A201E7BB0EF000E57E5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C9C00A241E7BB0EF000E57E5 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9C00A251E7BB0EF000E57E5 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C9C00A3E1E7BB0EF000E57E5 /* Debug */ = {
@@ -536,6 +515,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = JLMasonryPractice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLMasonryPractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -549,6 +529,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = JLMasonryPractice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLMasonryPractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
