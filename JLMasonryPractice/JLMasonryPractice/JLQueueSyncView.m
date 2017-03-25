@@ -106,7 +106,7 @@
 - (void)onClickWaitButton:(UIButton *)sender{
 
     if (!_semaphore) {
-         _semaphore = dispatch_semaphore_create(0);
+         _semaphore = dispatch_semaphor+e_create(0);
     }
    
     
