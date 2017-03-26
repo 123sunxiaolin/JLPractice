@@ -9,12 +9,11 @@
 /* Begin PBXBuildFile section */
 		C930CAB31E84F2BB004AD6D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930CAB21E84F2BB004AD6D0 /* AppDelegate.swift */; };
 		C930CAB51E84F2BB004AD6D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930CAB41E84F2BB004AD6D0 /* ViewController.swift */; };
-		C930CAB81E84F2BB004AD6D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C930CAB61E84F2BB004AD6D0 /* Main.storyboard */; };
 		C930CABA1E84F2BB004AD6D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C930CAB91E84F2BB004AD6D0 /* Assets.xcassets */; };
-		C930CABD1E84F2BB004AD6D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C930CABB1E84F2BB004AD6D0 /* LaunchScreen.storyboard */; };
 		C930CAC81E84F2BB004AD6D0 /* JLQrCodePracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930CAC71E84F2BB004AD6D0 /* JLQrCodePracticeTests.swift */; };
 		C930CAD31E84F2BB004AD6D0 /* JLQrCodePracticeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930CAD21E84F2BB004AD6D0 /* JLQrCodePracticeUITests.swift */; };
 		C930CAE11E84F2EA004AD6D0 /* JLMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930CAE01E84F2EA004AD6D0 /* JLMainViewController.swift */; };
+		DD1C12891E86B1B6002D4AF8 /* JLScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C12881E86B1B6002D4AF8 /* JLScanViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,9 +37,7 @@
 		C930CAAF1E84F2BA004AD6D0 /* JLQrCodePractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLQrCodePractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C930CAB21E84F2BB004AD6D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C930CAB41E84F2BB004AD6D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C930CAB71E84F2BB004AD6D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C930CAB91E84F2BB004AD6D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C930CABC1E84F2BB004AD6D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C930CABE1E84F2BB004AD6D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C930CAC31E84F2BB004AD6D0 /* JLQrCodePracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLQrCodePracticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C930CAC71E84F2BB004AD6D0 /* JLQrCodePracticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLQrCodePracticeTests.swift; sourceTree = "<group>"; };
@@ -49,6 +46,7 @@
 		C930CAD21E84F2BB004AD6D0 /* JLQrCodePracticeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLQrCodePracticeUITests.swift; sourceTree = "<group>"; };
 		C930CAD41E84F2BB004AD6D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C930CAE01E84F2EA004AD6D0 /* JLMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLMainViewController.swift; sourceTree = "<group>"; };
+		DD1C12881E86B1B6002D4AF8 /* JLScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLScanViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +99,9 @@
 			children = (
 				C930CAB21E84F2BB004AD6D0 /* AppDelegate.swift */,
 				C930CAE01E84F2EA004AD6D0 /* JLMainViewController.swift */,
+				DD1C12881E86B1B6002D4AF8 /* JLScanViewController.swift */,
 				C930CAB41E84F2BB004AD6D0 /* ViewController.swift */,
-				C930CAB61E84F2BB004AD6D0 /* Main.storyboard */,
 				C930CAB91E84F2BB004AD6D0 /* Assets.xcassets */,
-				C930CABB1E84F2BB004AD6D0 /* LaunchScreen.storyboard */,
 				C930CABE1E84F2BB004AD6D0 /* Info.plist */,
 			);
 			path = JLQrCodePractice;
@@ -236,9 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C930CABD1E84F2BB004AD6D0 /* LaunchScreen.storyboard in Resources */,
 				C930CABA1E84F2BB004AD6D0 /* Assets.xcassets in Resources */,
-				C930CAB81E84F2BB004AD6D0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +261,7 @@
 				C930CAE11E84F2EA004AD6D0 /* JLMainViewController.swift in Sources */,
 				C930CAB51E84F2BB004AD6D0 /* ViewController.swift in Sources */,
 				C930CAB31E84F2BB004AD6D0 /* AppDelegate.swift in Sources */,
+				DD1C12891E86B1B6002D4AF8 /* JLScanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,25 +295,6 @@
 			targetProxy = C930CACF1E84F2BB004AD6D0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		C930CAB61E84F2BB004AD6D0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C930CAB71E84F2BB004AD6D0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C930CABB1E84F2BB004AD6D0 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C930CABC1E84F2BB004AD6D0 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C930CAD51E84F2BB004AD6D0 /* Debug */ = {
@@ -419,6 +396,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H9ZBM36KF6;
 				INFOPLIST_FILE = JLQrCodePractice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLQrCodePractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -432,6 +410,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H9ZBM36KF6;
 				INFOPLIST_FILE = JLQrCodePractice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLQrCodePractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -512,6 +491,7 @@
 				C930CAD91E84F2BB004AD6D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C930CADA1E84F2BB004AD6D0 /* Build configuration list for PBXNativeTarget "JLQrCodePracticeTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +500,7 @@
 				C930CADC1E84F2BB004AD6D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C930CADD1E84F2BB004AD6D0 /* Build configuration list for PBXNativeTarget "JLQrCodePracticeUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +509,7 @@
 				C930CADF1E84F2BB004AD6D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
