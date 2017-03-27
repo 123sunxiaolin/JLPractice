@@ -12,12 +12,13 @@ class JLMainViewController: UIViewController {
 
     private lazy var scanButton:UIButton! = {
         
-        var button = UIButton(type: UIButtonType.Custom)
+        var button = UIButton(type: UIButtonType.custom)
         button.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
-        button.setTitle("扫一扫", forState: UIControlState.Normal)
-        button.setTitleColor(UIColor.orangeColor(), forState: UIControlState.Normal)
-        button.backgroundColor = UIColor.lightGrayColor()
-        button.addTarget(self, action: Selector("onClickScanButton:"), forControlEvents: UIControlEvents.TouchUpInside)
+        button.setTitle("扫一扫", for: UIControlState.normal)
+        button.setTitleColor(UIColor.orange, for: UIControlState.normal)
+        button.backgroundColor = UIColor.lightGray
+        
+        button.addTarget(self, action: #selector(onClickScanButton(sender:)), for: UIControlEvents.touchUpInside)
         button.layer.borderWidth = 2.0
         button.layer.cornerRadius = 3.0
         button.clipsToBounds = true
@@ -31,7 +32,7 @@ class JLMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "扫一扫"
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         self.view.addSubview(self.scanButton)
     }
     

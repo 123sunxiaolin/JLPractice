@@ -1,4 +1,4 @@
-# JLPractice in Swift 2.x
+# JLPractice in Swift3.0
 ⛵️JLPractice provides a collection of popular technology practices which are programming in Objective-C and Swift language.Welcome to use it!
 
 Getting Started

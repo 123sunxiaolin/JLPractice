@@ -14,17 +14,17 @@ class JLScanViewController: UIViewController {
     private var captureDevice: AVCaptureDevice?
     private var deviceInput: AVCaptureDeviceInput?
     private var metadataOutput: AVCaptureMetadataOutput?
-    private var captureSession: AVCaptureSession?
+    fileprivate var captureSession: AVCaptureSession!
     private var previewLayer: AVCaptureVideoPreviewLayer?
 
     private lazy var backButton:UIButton! = {
-        var button = UIButton(type: UIButtonType.Custom)
+        var button = UIButton(type: UIButtonType.custom)
         button.frame = CGRect(x: 0, y: 0, width: 62, height: 62)
-        button.backgroundColor = UIColor.clearColor()
-        button.setTitle("扫一扫", forState: UIControlState.Normal)
-        button.setTitleColor(UIColor.orangeColor(), forState: UIControlState.Normal)
-        button.backgroundColor = UIColor.lightGrayColor()
-        button.addTarget(self, action: Selector("onClickScanButton:"), forControlEvents: UIControlEvents.TouchUpInside)
+        button.backgroundColor = UIColor.clear
+        button.setTitle("扫一扫", for: UIControlState.normal)
+        button.setTitleColor(UIColor.orange, for: UIControlState.normal)
+        button.backgroundColor = UIColor.lightGray
+        button.addTarget(self, action: #selector(onClickLeftBarItem(sender:)), for: UIControlEvents.touchUpInside)
         button.layer.borderWidth = 2.0
         button.layer.cornerRadius = 3.0
         button.clipsToBounds = true
@@ -35,35 +35,35 @@ class JLScanViewController: UIViewController {
     private lazy var hintLabel:UILabel! = {
         var label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
         label.center = self.view.center
-        label.font = UIFont.systemFontOfSize(16)
-        label.textColor = UIColor.orangeColor()
-        label.backgroundColor = UIColor.clearColor()
-        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = UIColor.orange
+        label.backgroundColor = UIColor.clear
+        label.textAlignment = NSTextAlignment.center
         return label
     }()
     
     private lazy var scanImageView:UIImageView! = {
         var imageView = UIImageView(image: UIImage(named: "img_qrCode"))
-        imageView.frame = CGRect(x: 0, y: 0, width: CGRectGetWidth(self.view.frame), height: CGRectGetHeight(self.view.frame))
+        imageView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         return imageView
     }()
     
     private lazy var scanHintLabel:UILabel! = {
-        var label = UILabel(frame: CGRect(x: 0, y: CGRectGetHeight(self.view.frame) + 120, width: CGRectGetWidth(self.view.frame), height: 40))
+        var label = UILabel(frame: CGRect(x: 0, y: self.view.frame.height/2 + 120, width: self.view.frame.width, height: 40))
         label.center = self.view.center
-        label.font = UIFont.systemFontOfSize(16)
-        label.textColor = UIColor.orangeColor()
-        label.backgroundColor = UIColor.clearColor()
-        label.textAlignment = NSTextAlignment.Center
-         label.text = "将二维码/条码放在框内，即可自动扫描"
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = UIColor.orange
+        label.backgroundColor = UIColor.clear
+        label.textAlignment = NSTextAlignment.center
+        label.text = "将二维码/条码放在框内，即可自动扫描"
         return label
     }()
     
-    private lazy var resultLabel:UILabel! = {
-        var label = UILabel(frame: CGRect(x: 0, y: CGRectGetMaxY(self.scanHintLabel.frame) + 10, width: CGRectGetWidth(self.view.frame), height: 80))
-        label.font = UIFont.systemFontOfSize(16)
-        label.textColor = UIColor.orangeColor()
-        label.backgroundColor = UIColor.clearColor()
+    fileprivate lazy var resultLabel:UILabel! = {
+        var label = UILabel(frame: CGRect(x: 0, y: self.scanHintLabel.frame.maxY + 10, width: self.view.frame.width, height: 80))
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = UIColor.orange
+        label.backgroundColor = UIColor.clear
         return label
     }()
     
@@ -73,9 +73,13 @@ class JLScanViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = "扫一扫"
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         configueNavigationBar()
         isAvailableCamera()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,16 +90,16 @@ class JLScanViewController: UIViewController {
     //MARK: Private
     private func configueNavigationBar(){
         
-        let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "btn_return"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("onClickLeftBarItem:"))
+        let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "btn_return"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(onClickLeftBarItem(sender:)))
         self.navigationItem.leftBarButtonItem = leftBarButtonItem
         
-        let rightBarButtonItem = UIBarButtonItem(title: "相册", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("onClickRightBarItem:"))
+        let rightBarButtonItem = UIBarButtonItem(title: "相册", style: UIBarButtonItemStyle.plain, target: self, action: #selector(onClickRightBarItem(sender:)))
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
     func isAvailableCamera(){
         
-        let isAvailable = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        let isAvailable = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         if isAvailable{
             getCameraAuthorizationStatus()
         }else{
@@ -105,24 +109,24 @@ class JLScanViewController: UIViewController {
     }
     
     func getCameraAuthorizationStatus(){
-        let authStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
-        if authStatus == AVAuthorizationStatus.NotDetermined{
+        let authStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+        if authStatus == AVAuthorizationStatus.notDetermined{
             
-            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (granted) -> Void in
+            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (granted) -> Void in
                 if granted{
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    DispatchQueue.main.async {
                         self.startScanningCode()
                         self.setupCustomView()
-                    })
+                    }
                     
                 }else{
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    DispatchQueue.main.async {
                         self.showCameraNotDeterminedView()
-                    })
+                    }
                 }
             })
             
-        }else if authStatus == AVAuthorizationStatus.Authorized{
+        }else if authStatus == AVAuthorizationStatus.authorized{
             self.startScanningCode()
             self.setupCustomView()
             
@@ -132,7 +136,7 @@ class JLScanViewController: UIViewController {
     }
     
     func startScanningCode(){
-        captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         if (captureSession == nil){
             captureSession = AVCaptureSession()
         }
@@ -142,18 +146,16 @@ class JLScanViewController: UIViewController {
             print(error.description)
         }
         
-        if ((captureSession?.canAddInput(deviceInput)) != nil){
-            captureSession?.addInput(deviceInput)
-        }
+        captureSession.addInput(deviceInput)
         
-        let systemVer = UIDevice.currentDevice().systemVersion
+        let systemVer = Double(UIDevice.current.systemVersion)!
 
-        if Float(systemVer) >= 7.0{
+        if systemVer > 7.0 {
             
             metadataOutput = AVCaptureMetadataOutput()
             //set scan rectange
             metadataOutput?.rectOfInterest = CGRect(x: 0.22, y: 0.16, width: 0.43, height: 0.68)
-            metadataOutput?.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
+            metadataOutput?.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             captureSession?.canSetSessionPreset(AVCaptureSessionPresetHigh)
             if ((captureSession?.canAddOutput(metadataOutput)) != nil){
                 captureSession?.addOutput(metadataOutput)
@@ -166,7 +168,7 @@ class JLScanViewController: UIViewController {
                 previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
                 previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
                 previewLayer?.frame = self.view.bounds
-                self.view.layer.insertSublayer(previewLayer!, atIndex: 0)
+                self.view.layer.insertSublayer(previewLayer!, at: 0)
                 captureSession?.startRunning()
                 
             } else {
@@ -205,13 +207,13 @@ class JLScanViewController: UIViewController {
         
         let qrDtector = CIDetector(ofType: CIDetectorTypeQRCode, context: CIContext(options: [kCIContextUseSoftwareRenderer: (true)]), options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
         
-        let resultArray = qrDtector.featuresInImage(ciimage)
-        if resultArray.count > 0
+        let resultArray = qrDtector?.features(in: ciimage)
+        if (resultArray?.count)! > 0
         {
             
-            let feature = resultArray.first
+            let feature = resultArray?.first
             let qrFeature = feature as! CIQRCodeFeature
-            return qrFeature.messageString
+            return qrFeature.messageString!
             
         }else{
             return ""
@@ -223,15 +225,15 @@ class JLScanViewController: UIViewController {
     
     //MARK: Acrion Method
     func onClickLeftBarItem(sender:UIBarButtonItem){
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func onClickRightBarItem(sender:UIBarButtonItem){
         let imagePickerViewController = UIImagePickerController()
         imagePickerViewController.allowsEditing = true
         imagePickerViewController.delegate = self
-        imagePickerViewController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(imagePickerViewController, animated: true) { () -> Void in
+        imagePickerViewController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        self.present(imagePickerViewController, animated: true) { () -> Void in
             if self.captureSession != nil{
                 self.captureSession?.stopRunning()
             }
@@ -243,10 +245,10 @@ class JLScanViewController: UIViewController {
 
 extension JLScanViewController:AVCaptureMetadataOutputObjectsDelegate{
     
-    func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!){
+    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!){
         
         if metadataObjects.count > 0{
-            captureSession?.stopRunning()
+            self.captureSession?.stopRunning()
             
             let metadataObject = metadataObjects.first as! AVMetadataMachineReadableCodeObject
             
@@ -261,13 +263,13 @@ extension JLScanViewController:AVCaptureMetadataOutputObjectsDelegate{
 }
 
 extension JLScanViewController:UINavigationControllerDelegate, UIImagePickerControllerDelegate{
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let selectedImage = info["UIImagePickerControllerEditedImage"] as! UIImage
-        let result = self.decodeImage(selectedImage)
+        let result = self.decodeImage(decodedImage: selectedImage)
         
         print("result:\(result)")
         
-        self.dismissViewControllerAnimated(true) { () -> Void in
+        self.dismiss(animated: true) { () -> Void in
             if result != ""{
                 self.resultLabel.text = result
             }
@@ -275,7 +277,7 @@ extension JLScanViewController:UINavigationControllerDelegate, UIImagePickerCont
         
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         if self.captureSession != nil{
             captureSession?.startRunning()
         }
