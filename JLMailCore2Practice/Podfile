@@ -3,7 +3,7 @@ platform :ios, '7.0'
 target 'JLMailCore2Practice' do
     
 #MailCore2邮箱SDK
-#pod 'mailcore2-ios’
+pod 'mailcore2-ios’
 
 #适配库
 pod 'Masonry', '~> 1.0.2'
