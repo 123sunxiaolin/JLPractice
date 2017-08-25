@@ -1,0 +1,763 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		55309D6C0165D40C9E03F0D8 /* libPods-JLMailCore2Practice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60ACACE576521B59DE580801 /* libPods-JLMailCore2Practice.a */; };
+		C940A2471EF7A22C00029350 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C940A2461EF7A22C00029350 /* main.m */; };
+		C940A24A1EF7A22C00029350 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C940A2491EF7A22C00029350 /* AppDelegate.m */; };
+		C940A24D1EF7A22C00029350 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C940A24C1EF7A22C00029350 /* ViewController.m */; };
+		C940A2501EF7A22C00029350 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C940A24E1EF7A22C00029350 /* Main.storyboard */; };
+		C940A2521EF7A22C00029350 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C940A2511EF7A22C00029350 /* Assets.xcassets */; };
+		C940A2551EF7A22C00029350 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C940A2531EF7A22C00029350 /* LaunchScreen.storyboard */; };
+		C940A2601EF7A22C00029350 /* JLMailCore2PracticeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C940A25F1EF7A22C00029350 /* JLMailCore2PracticeTests.m */; };
+		C940A26B1EF7A22C00029350 /* JLMailCore2PracticeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C940A26A1EF7A22C00029350 /* JLMailCore2PracticeUITests.m */; };
+		C975D4FA1EFCB81A002D21CF /* MCOCIDURLProtocol.mm in Sources */ = {isa = PBXBuildFile; fileRef = C975D4F51EFCB81A002D21CF /* MCOCIDURLProtocol.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C975D4FB1EFCB81A002D21CF /* MCOMessageView.mm in Sources */ = {isa = PBXBuildFile; fileRef = C975D4F71EFCB81A002D21CF /* MCOMessageView.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C975D5031EFCBEB0002D21CF /* SMTPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C975D5011EFCBEB0002D21CF /* SMTPViewController.m */; };
+		C975D5041EFCBEB0002D21CF /* SMTPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C975D5021EFCBEB0002D21CF /* SMTPViewController.xib */; };
+		C975D50E1EFCF797002D21CF /* MCTMsgViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C975D50D1EFCF797002D21CF /* MCTMsgViewController.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C975D5111EFD172A002D21CF /* POPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C975D5101EFD172A002D21CF /* POPDetailViewController.m */; };
+		C985466C1F00F1A0009B5B84 /* ZBToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C985466B1F00F1A0009B5B84 /* ZBToken.m */; };
+		C98546701F01017B009B5B84 /* ZBTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = C985466F1F01017B009B5B84 /* ZBTokenField.m */; };
+		C98546751F0104B9009B5B84 /* ZBTokenFieldInternalDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C98546741F0104B9009B5B84 /* ZBTokenFieldInternalDelegate.m */; };
+		C98546781F01142C009B5B84 /* ZBTokenFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98546771F01142C009B5B84 /* ZBTokenFieldView.m */; };
+		C985467B1F01312F009B5B84 /* SendMailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C985467A1F01312F009B5B84 /* SendMailViewController.m */; };
+		C985467F1F01FA1F009B5B84 /* ZBCustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C985467E1F01FA1F009B5B84 /* ZBCustomTextField.m */; };
+		C98546821F022FED009B5B84 /* ZBSendMailView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98546811F022FED009B5B84 /* ZBSendMailView.m */; };
+		C99883011EF9024B00067876 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99883001EF9024B00067876 /* MainViewController.m */; };
+		C99883041EF907E800067876 /* IMAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99883031EF907E800067876 /* IMAPViewController.m */; };
+		C99883081EF9271A00067876 /* IMAPMailListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99883071EF9271A00067876 /* IMAPMailListViewController.m */; };
+		C998830B1EF93AF500067876 /* MCTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C998830A1EF93AF500067876 /* MCTTableViewCell.m */; };
+		C99883171EFA41FF00067876 /* POPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99883161EFA41FF00067876 /* POPViewController.m */; };
+		C998831B1EFA7A8F00067876 /* POPMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C998831A1EFA7A8F00067876 /* POPMessageModel.m */; };
+		C9EC11A21F0A5D7D00B7C9F1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EC11A11F0A5D7D00B7C9F1 /* MessageUI.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C940A25C1EF7A22C00029350 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C940A23A1EF7A22C00029350 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C940A2411EF7A22C00029350;
+			remoteInfo = JLMailCore2Practice;
+		};
+		C940A2671EF7A22C00029350 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C940A23A1EF7A22C00029350 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C940A2411EF7A22C00029350;
+			remoteInfo = JLMailCore2Practice;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2FF91D144B378BF1489F5E91 /* Pods-JLMailCore2Practice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLMailCore2Practice.release.xcconfig"; path = "Pods/Target Support Files/Pods-JLMailCore2Practice/Pods-JLMailCore2Practice.release.xcconfig"; sourceTree = "<group>"; };
+		60ACACE576521B59DE580801 /* libPods-JLMailCore2Practice.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JLMailCore2Practice.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C940A2421EF7A22C00029350 /* JLMailCore2Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLMailCore2Practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C940A2461EF7A22C00029350 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C940A2481EF7A22C00029350 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C940A2491EF7A22C00029350 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C940A24B1EF7A22C00029350 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C940A24C1EF7A22C00029350 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C940A24F1EF7A22C00029350 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C940A2511EF7A22C00029350 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C940A2541EF7A22C00029350 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C940A2561EF7A22C00029350 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C940A25B1EF7A22C00029350 /* JLMailCore2PracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLMailCore2PracticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C940A25F1EF7A22C00029350 /* JLMailCore2PracticeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JLMailCore2PracticeTests.m; sourceTree = "<group>"; };
+		C940A2611EF7A22C00029350 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C940A2661EF7A22C00029350 /* JLMailCore2PracticeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLMailCore2PracticeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C940A26A1EF7A22C00029350 /* JLMailCore2PracticeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JLMailCore2PracticeUITests.m; sourceTree = "<group>"; };
+		C940A26C1EF7A22C00029350 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C975D4F41EFCB81A002D21CF /* MCOCIDURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCOCIDURLProtocol.h; sourceTree = "<group>"; };
+		C975D4F51EFCB81A002D21CF /* MCOCIDURLProtocol.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MCOCIDURLProtocol.mm; sourceTree = "<group>"; };
+		C975D4F61EFCB81A002D21CF /* MCOMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCOMessageView.h; sourceTree = "<group>"; };
+		C975D4F71EFCB81A002D21CF /* MCOMessageView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MCOMessageView.mm; sourceTree = "<group>"; };
+		C975D5001EFCBEB0002D21CF /* SMTPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTPViewController.h; sourceTree = "<group>"; };
+		C975D5011EFCBEB0002D21CF /* SMTPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTPViewController.m; sourceTree = "<group>"; };
+		C975D5021EFCBEB0002D21CF /* SMTPViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMTPViewController.xib; sourceTree = "<group>"; };
+		C975D50C1EFCF797002D21CF /* MCTMsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCTMsgViewController.h; sourceTree = "<group>"; };
+		C975D50D1EFCF797002D21CF /* MCTMsgViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MCTMsgViewController.mm; sourceTree = "<group>"; };
+		C975D50F1EFD172A002D21CF /* POPDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POPDetailViewController.h; sourceTree = "<group>"; };
+		C975D5101EFD172A002D21CF /* POPDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POPDetailViewController.m; sourceTree = "<group>"; };
+		C985466A1F00F1A0009B5B84 /* ZBToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZBToken.h; path = TokenField/ZBToken.h; sourceTree = "<group>"; };
+		C985466B1F00F1A0009B5B84 /* ZBToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZBToken.m; path = TokenField/ZBToken.m; sourceTree = "<group>"; };
+		C985466E1F01017B009B5B84 /* ZBTokenField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZBTokenField.h; path = TokenField/ZBTokenField.h; sourceTree = "<group>"; };
+		C985466F1F01017B009B5B84 /* ZBTokenField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZBTokenField.m; path = TokenField/ZBTokenField.m; sourceTree = "<group>"; };
+		C98546721F010270009B5B84 /* ZBTokenFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZBTokenFieldDelegate.h; path = TokenField/ZBTokenFieldDelegate.h; sourceTree = "<group>"; };
+		C98546731F0104B9009B5B84 /* ZBTokenFieldInternalDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZBTokenFieldInternalDelegate.h; path = TokenField/ZBTokenFieldInternalDelegate.h; sourceTree = "<group>"; };
+		C98546741F0104B9009B5B84 /* ZBTokenFieldInternalDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZBTokenFieldInternalDelegate.m; path = TokenField/ZBTokenFieldInternalDelegate.m; sourceTree = "<group>"; };
+		C98546761F01142C009B5B84 /* ZBTokenFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZBTokenFieldView.h; path = TokenField/ZBTokenFieldView.h; sourceTree = "<group>"; };
+		C98546771F01142C009B5B84 /* ZBTokenFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZBTokenFieldView.m; path = TokenField/ZBTokenFieldView.m; sourceTree = "<group>"; };
+		C98546791F01312F009B5B84 /* SendMailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMailViewController.h; sourceTree = "<group>"; };
+		C985467A1F01312F009B5B84 /* SendMailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMailViewController.m; sourceTree = "<group>"; };
+		C985467C1F0131C6009B5B84 /* ZBTokenFieldConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBTokenFieldConst.h; sourceTree = "<group>"; };
+		C985467D1F01FA1F009B5B84 /* ZBCustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZBCustomTextField.h; path = TokenField/ZBCustomTextField.h; sourceTree = "<group>"; };
+		C985467E1F01FA1F009B5B84 /* ZBCustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZBCustomTextField.m; path = TokenField/ZBCustomTextField.m; sourceTree = "<group>"; };
+		C98546801F022FED009B5B84 /* ZBSendMailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZBSendMailView.h; path = TokenField/ZBSendMailView.h; sourceTree = "<group>"; };
+		C98546811F022FED009B5B84 /* ZBSendMailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZBSendMailView.m; path = TokenField/ZBSendMailView.m; sourceTree = "<group>"; };
+		C99882FF1EF9024B00067876 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		C99883001EF9024B00067876 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		C99883021EF907E800067876 /* IMAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAPViewController.h; sourceTree = "<group>"; };
+		C99883031EF907E800067876 /* IMAPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAPViewController.m; sourceTree = "<group>"; };
+		C99883051EF90D7500067876 /* JLMailCore2Const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JLMailCore2Const.h; sourceTree = "<group>"; };
+		C99883061EF9271A00067876 /* IMAPMailListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAPMailListViewController.h; sourceTree = "<group>"; };
+		C99883071EF9271A00067876 /* IMAPMailListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAPMailListViewController.m; sourceTree = "<group>"; };
+		C99883091EF93AF500067876 /* MCTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCTTableViewCell.h; sourceTree = "<group>"; };
+		C998830A1EF93AF500067876 /* MCTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCTTableViewCell.m; sourceTree = "<group>"; };
+		C99883151EFA41FF00067876 /* POPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POPViewController.h; sourceTree = "<group>"; };
+		C99883161EFA41FF00067876 /* POPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POPViewController.m; sourceTree = "<group>"; };
+		C99883191EFA7A8F00067876 /* POPMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POPMessageModel.h; path = Model/POPMessageModel.h; sourceTree = "<group>"; };
+		C998831A1EFA7A8F00067876 /* POPMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POPMessageModel.m; path = Model/POPMessageModel.m; sourceTree = "<group>"; };
+		C9EC11A11F0A5D7D00B7C9F1 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		D90602A00F2BA8040C76F04D /* Pods-JLMailCore2Practice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLMailCore2Practice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JLMailCore2Practice/Pods-JLMailCore2Practice.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C940A23F1EF7A22C00029350 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9EC11A21F0A5D7D00B7C9F1 /* MessageUI.framework in Frameworks */,
+				55309D6C0165D40C9E03F0D8 /* libPods-JLMailCore2Practice.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C940A2581EF7A22C00029350 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C940A2631EF7A22C00029350 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AAA787A7FD3B1DC0C192049C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D90602A00F2BA8040C76F04D /* Pods-JLMailCore2Practice.debug.xcconfig */,
+				2FF91D144B378BF1489F5E91 /* Pods-JLMailCore2Practice.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C940A2391EF7A22C00029350 = {
+			isa = PBXGroup;
+			children = (
+				C940A2441EF7A22C00029350 /* JLMailCore2Practice */,
+				C940A25E1EF7A22C00029350 /* JLMailCore2PracticeTests */,
+				C940A2691EF7A22C00029350 /* JLMailCore2PracticeUITests */,
+				C940A2431EF7A22C00029350 /* Products */,
+				AAA787A7FD3B1DC0C192049C /* Pods */,
+				EE0B76FA12D95A8A33AD5D22 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C940A2431EF7A22C00029350 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C940A2421EF7A22C00029350 /* JLMailCore2Practice.app */,
+				C940A25B1EF7A22C00029350 /* JLMailCore2PracticeTests.xctest */,
+				C940A2661EF7A22C00029350 /* JLMailCore2PracticeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C940A2441EF7A22C00029350 /* JLMailCore2Practice */ = {
+			isa = PBXGroup;
+			children = (
+				C98546691F00EFEF009B5B84 /* TokenField */,
+				C99883051EF90D7500067876 /* JLMailCore2Const.h */,
+				C940A2481EF7A22C00029350 /* AppDelegate.h */,
+				C940A2491EF7A22C00029350 /* AppDelegate.m */,
+				C99882FF1EF9024B00067876 /* MainViewController.h */,
+				C99883001EF9024B00067876 /* MainViewController.m */,
+				C99883151EFA41FF00067876 /* POPViewController.h */,
+				C99883161EFA41FF00067876 /* POPViewController.m */,
+				C99883021EF907E800067876 /* IMAPViewController.h */,
+				C99883031EF907E800067876 /* IMAPViewController.m */,
+				C99883061EF9271A00067876 /* IMAPMailListViewController.h */,
+				C99883071EF9271A00067876 /* IMAPMailListViewController.m */,
+				C98546791F01312F009B5B84 /* SendMailViewController.h */,
+				C985467A1F01312F009B5B84 /* SendMailViewController.m */,
+				C975D5001EFCBEB0002D21CF /* SMTPViewController.h */,
+				C975D5011EFCBEB0002D21CF /* SMTPViewController.m */,
+				C975D5021EFCBEB0002D21CF /* SMTPViewController.xib */,
+				C99883091EF93AF500067876 /* MCTTableViewCell.h */,
+				C998830A1EF93AF500067876 /* MCTTableViewCell.m */,
+				C940A24B1EF7A22C00029350 /* ViewController.h */,
+				C940A24C1EF7A22C00029350 /* ViewController.m */,
+				C975D4F31EFCB79B002D21CF /* MailDetail */,
+				C99883181EFA7A6500067876 /* Model */,
+				C940A24E1EF7A22C00029350 /* Main.storyboard */,
+				C940A2511EF7A22C00029350 /* Assets.xcassets */,
+				C940A2531EF7A22C00029350 /* LaunchScreen.storyboard */,
+				C940A2561EF7A22C00029350 /* Info.plist */,
+				C940A2451EF7A22C00029350 /* Supporting Files */,
+			);
+			path = JLMailCore2Practice;
+			sourceTree = "<group>";
+		};
+		C940A2451EF7A22C00029350 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C940A2461EF7A22C00029350 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C940A25E1EF7A22C00029350 /* JLMailCore2PracticeTests */ = {
+			isa = PBXGroup;
+			children = (
+				C940A25F1EF7A22C00029350 /* JLMailCore2PracticeTests.m */,
+				C940A2611EF7A22C00029350 /* Info.plist */,
+			);
+			path = JLMailCore2PracticeTests;
+			sourceTree = "<group>";
+		};
+		C940A2691EF7A22C00029350 /* JLMailCore2PracticeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C940A26A1EF7A22C00029350 /* JLMailCore2PracticeUITests.m */,
+				C940A26C1EF7A22C00029350 /* Info.plist */,
+			);
+			path = JLMailCore2PracticeUITests;
+			sourceTree = "<group>";
+		};
+		C975D4F31EFCB79B002D21CF /* MailDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C975D50C1EFCF797002D21CF /* MCTMsgViewController.h */,
+				C975D50D1EFCF797002D21CF /* MCTMsgViewController.mm */,
+				C975D4F41EFCB81A002D21CF /* MCOCIDURLProtocol.h */,
+				C975D4F51EFCB81A002D21CF /* MCOCIDURLProtocol.mm */,
+				C975D4F61EFCB81A002D21CF /* MCOMessageView.h */,
+				C975D4F71EFCB81A002D21CF /* MCOMessageView.mm */,
+				C975D50F1EFD172A002D21CF /* POPDetailViewController.h */,
+				C975D5101EFD172A002D21CF /* POPDetailViewController.m */,
+			);
+			name = MailDetail;
+			sourceTree = "<group>";
+		};
+		C98546691F00EFEF009B5B84 /* TokenField */ = {
+			isa = PBXGroup;
+			children = (
+				C985466A1F00F1A0009B5B84 /* ZBToken.h */,
+				C985466B1F00F1A0009B5B84 /* ZBToken.m */,
+				C985466E1F01017B009B5B84 /* ZBTokenField.h */,
+				C985466F1F01017B009B5B84 /* ZBTokenField.m */,
+				C98546721F010270009B5B84 /* ZBTokenFieldDelegate.h */,
+				C98546731F0104B9009B5B84 /* ZBTokenFieldInternalDelegate.h */,
+				C98546741F0104B9009B5B84 /* ZBTokenFieldInternalDelegate.m */,
+				C98546761F01142C009B5B84 /* ZBTokenFieldView.h */,
+				C98546771F01142C009B5B84 /* ZBTokenFieldView.m */,
+				C985467C1F0131C6009B5B84 /* ZBTokenFieldConst.h */,
+				C985467D1F01FA1F009B5B84 /* ZBCustomTextField.h */,
+				C985467E1F01FA1F009B5B84 /* ZBCustomTextField.m */,
+				C98546801F022FED009B5B84 /* ZBSendMailView.h */,
+				C98546811F022FED009B5B84 /* ZBSendMailView.m */,
+			);
+			name = TokenField;
+			sourceTree = "<group>";
+		};
+		C99883181EFA7A6500067876 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C99883191EFA7A8F00067876 /* POPMessageModel.h */,
+				C998831A1EFA7A8F00067876 /* POPMessageModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		EE0B76FA12D95A8A33AD5D22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9EC11A11F0A5D7D00B7C9F1 /* MessageUI.framework */,
+				60ACACE576521B59DE580801 /* libPods-JLMailCore2Practice.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C940A2411EF7A22C00029350 /* JLMailCore2Practice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C940A26F1EF7A22C00029350 /* Build configuration list for PBXNativeTarget "JLMailCore2Practice" */;
+			buildPhases = (
+				A074C6A8306E5FA38F0E81D4 /* [CP] Check Pods Manifest.lock */,
+				C940A23E1EF7A22C00029350 /* Sources */,
+				C940A23F1EF7A22C00029350 /* Frameworks */,
+				C940A2401EF7A22C00029350 /* Resources */,
+				CA13549B20B71B98A27671E3 /* [CP] Embed Pods Frameworks */,
+				B371C4BCCC157808A4B62760 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JLMailCore2Practice;
+			productName = JLMailCore2Practice;
+			productReference = C940A2421EF7A22C00029350 /* JLMailCore2Practice.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C940A25A1EF7A22C00029350 /* JLMailCore2PracticeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C940A2721EF7A22C00029350 /* Build configuration list for PBXNativeTarget "JLMailCore2PracticeTests" */;
+			buildPhases = (
+				C940A2571EF7A22C00029350 /* Sources */,
+				C940A2581EF7A22C00029350 /* Frameworks */,
+				C940A2591EF7A22C00029350 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C940A25D1EF7A22C00029350 /* PBXTargetDependency */,
+			);
+			name = JLMailCore2PracticeTests;
+			productName = JLMailCore2PracticeTests;
+			productReference = C940A25B1EF7A22C00029350 /* JLMailCore2PracticeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C940A2651EF7A22C00029350 /* JLMailCore2PracticeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C940A2751EF7A22C00029350 /* Build configuration list for PBXNativeTarget "JLMailCore2PracticeUITests" */;
+			buildPhases = (
+				C940A2621EF7A22C00029350 /* Sources */,
+				C940A2631EF7A22C00029350 /* Frameworks */,
+				C940A2641EF7A22C00029350 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C940A2681EF7A22C00029350 /* PBXTargetDependency */,
+			);
+			name = JLMailCore2PracticeUITests;
+			productName = JLMailCore2PracticeUITests;
+			productReference = C940A2661EF7A22C00029350 /* JLMailCore2PracticeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C940A23A1EF7A22C00029350 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = JackLin;
+				TargetAttributes = {
+					C940A2411EF7A22C00029350 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = H9ZBM36KF6;
+						ProvisioningStyle = Automatic;
+					};
+					C940A25A1EF7A22C00029350 = {
+						CreatedOnToolsVersion = 8.3.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C940A2411EF7A22C00029350;
+					};
+					C940A2651EF7A22C00029350 = {
+						CreatedOnToolsVersion = 8.3.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C940A2411EF7A22C00029350;
+					};
+				};
+			};
+			buildConfigurationList = C940A23D1EF7A22C00029350 /* Build configuration list for PBXProject "JLMailCore2Practice" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C940A2391EF7A22C00029350;
+			productRefGroup = C940A2431EF7A22C00029350 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C940A2411EF7A22C00029350 /* JLMailCore2Practice */,
+				C940A25A1EF7A22C00029350 /* JLMailCore2PracticeTests */,
+				C940A2651EF7A22C00029350 /* JLMailCore2PracticeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C940A2401EF7A22C00029350 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C940A2551EF7A22C00029350 /* LaunchScreen.storyboard in Resources */,
+				C940A2521EF7A22C00029350 /* Assets.xcassets in Resources */,
+				C975D5041EFCBEB0002D21CF /* SMTPViewController.xib in Resources */,
+				C940A2501EF7A22C00029350 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C940A2591EF7A22C00029350 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C940A2641EF7A22C00029350 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A074C6A8306E5FA38F0E81D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B371C4BCCC157808A4B62760 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JLMailCore2Practice/Pods-JLMailCore2Practice-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA13549B20B71B98A27671E3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JLMailCore2Practice/Pods-JLMailCore2Practice-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C940A23E1EF7A22C00029350 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C940A24D1EF7A22C00029350 /* ViewController.m in Sources */,
+				C998830B1EF93AF500067876 /* MCTTableViewCell.m in Sources */,
+				C975D4FA1EFCB81A002D21CF /* MCOCIDURLProtocol.mm in Sources */,
+				C940A24A1EF7A22C00029350 /* AppDelegate.m in Sources */,
+				C98546751F0104B9009B5B84 /* ZBTokenFieldInternalDelegate.m in Sources */,
+				C99883041EF907E800067876 /* IMAPViewController.m in Sources */,
+				C99883171EFA41FF00067876 /* POPViewController.m in Sources */,
+				C98546781F01142C009B5B84 /* ZBTokenFieldView.m in Sources */,
+				C985466C1F00F1A0009B5B84 /* ZBToken.m in Sources */,
+				C975D50E1EFCF797002D21CF /* MCTMsgViewController.mm in Sources */,
+				C975D5031EFCBEB0002D21CF /* SMTPViewController.m in Sources */,
+				C998831B1EFA7A8F00067876 /* POPMessageModel.m in Sources */,
+				C98546701F01017B009B5B84 /* ZBTokenField.m in Sources */,
+				C98546821F022FED009B5B84 /* ZBSendMailView.m in Sources */,
+				C940A2471EF7A22C00029350 /* main.m in Sources */,
+				C985467F1F01FA1F009B5B84 /* ZBCustomTextField.m in Sources */,
+				C99883081EF9271A00067876 /* IMAPMailListViewController.m in Sources */,
+				C985467B1F01312F009B5B84 /* SendMailViewController.m in Sources */,
+				C975D4FB1EFCB81A002D21CF /* MCOMessageView.mm in Sources */,
+				C99883011EF9024B00067876 /* MainViewController.m in Sources */,
+				C975D5111EFD172A002D21CF /* POPDetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C940A2571EF7A22C00029350 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C940A2601EF7A22C00029350 /* JLMailCore2PracticeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C940A2621EF7A22C00029350 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C940A26B1EF7A22C00029350 /* JLMailCore2PracticeUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C940A25D1EF7A22C00029350 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C940A2411EF7A22C00029350 /* JLMailCore2Practice */;
+			targetProxy = C940A25C1EF7A22C00029350 /* PBXContainerItemProxy */;
+		};
+		C940A2681EF7A22C00029350 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C940A2411EF7A22C00029350 /* JLMailCore2Practice */;
+			targetProxy = C940A2671EF7A22C00029350 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C940A24E1EF7A22C00029350 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C940A24F1EF7A22C00029350 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C940A2531EF7A22C00029350 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C940A2541EF7A22C00029350 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C940A26D1EF7A22C00029350 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C940A26E1EF7A22C00029350 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C940A2701EF7A22C00029350 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D90602A00F2BA8040C76F04D /* Pods-JLMailCore2Practice.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H9ZBM36KF6;
+				INFOPLIST_FILE = JLMailCore2Practice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLMailCore2Practice;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C940A2711EF7A22C00029350 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FF91D144B378BF1489F5E91 /* Pods-JLMailCore2Practice.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H9ZBM36KF6;
+				INFOPLIST_FILE = JLMailCore2Practice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLMailCore2Practice;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C940A2731EF7A22C00029350 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = JLMailCore2PracticeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLMailCore2PracticeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JLMailCore2Practice.app/JLMailCore2Practice";
+			};
+			name = Debug;
+		};
+		C940A2741EF7A22C00029350 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = JLMailCore2PracticeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLMailCore2PracticeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JLMailCore2Practice.app/JLMailCore2Practice";
+			};
+			name = Release;
+		};
+		C940A2761EF7A22C00029350 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = JLMailCore2PracticeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLMailCore2PracticeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = JLMailCore2Practice;
+			};
+			name = Debug;
+		};
+		C940A2771EF7A22C00029350 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = JLMailCore2PracticeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLMailCore2PracticeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = JLMailCore2Practice;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C940A23D1EF7A22C00029350 /* Build configuration list for PBXProject "JLMailCore2Practice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C940A26D1EF7A22C00029350 /* Debug */,
+				C940A26E1EF7A22C00029350 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C940A26F1EF7A22C00029350 /* Build configuration list for PBXNativeTarget "JLMailCore2Practice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C940A2701EF7A22C00029350 /* Debug */,
+				C940A2711EF7A22C00029350 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C940A2721EF7A22C00029350 /* Build configuration list for PBXNativeTarget "JLMailCore2PracticeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C940A2731EF7A22C00029350 /* Debug */,
+				C940A2741EF7A22C00029350 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C940A2751EF7A22C00029350 /* Build configuration list for PBXNativeTarget "JLMailCore2PracticeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C940A2761EF7A22C00029350 /* Debug */,
+				C940A2771EF7A22C00029350 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C940A23A1EF7A22C00029350 /* Project object */;
+}
