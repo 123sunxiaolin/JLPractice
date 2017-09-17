@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6ECEF955BA2AE0E3A1DA75B7 /* Pods_JLSwiftPractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCB21CC4FD162BD670325621 /* Pods_JLSwiftPractice.framework */; };
 		E7CBBB331F6E1ED10027BC77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBBB321F6E1ED10027BC77 /* AppDelegate.swift */; };
 		E7CBBB351F6E1ED10027BC77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBBB341F6E1ED10027BC77 /* ViewController.swift */; };
 		E7CBBB381F6E1ED10027BC77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7CBBB361F6E1ED10027BC77 /* Main.storyboard */; };
@@ -34,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E5F0C0B292F536956ED1986 /* Pods-JLSwiftPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSwiftPractice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JLSwiftPractice/Pods-JLSwiftPractice.debug.xcconfig"; sourceTree = "<group>"; };
+		C312C4E2DEBD51543CAD2D28 /* Pods-JLSwiftPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSwiftPractice.release.xcconfig"; path = "Pods/Target Support Files/Pods-JLSwiftPractice/Pods-JLSwiftPractice.release.xcconfig"; sourceTree = "<group>"; };
+		CCB21CC4FD162BD670325621 /* Pods_JLSwiftPractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JLSwiftPractice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CBBB2F1F6E1ED10027BC77 /* JLSwiftPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLSwiftPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CBBB321F6E1ED10027BC77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7CBBB341F6E1ED10027BC77 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ECEF955BA2AE0E3A1DA75B7 /* Pods_JLSwiftPractice.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +79,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34D626CE140D74C7B9FE1C89 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCB21CC4FD162BD670325621 /* Pods_JLSwiftPractice.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B71B2D1F2D2628AAD536C379 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6E5F0C0B292F536956ED1986 /* Pods-JLSwiftPractice.debug.xcconfig */,
+				C312C4E2DEBD51543CAD2D28 /* Pods-JLSwiftPractice.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E7CBBB261F6E1ED00027BC77 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +103,8 @@
 				E7CBBB461F6E1ED10027BC77 /* JLSwiftPracticeTests */,
 				E7CBBB511F6E1ED10027BC77 /* JLSwiftPracticeUITests */,
 				E7CBBB301F6E1ED10027BC77 /* Products */,
+				B71B2D1F2D2628AAD536C379 /* Pods */,
+				34D626CE140D74C7B9FE1C89 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7CBBB571F6E1ED10027BC77 /* Build configuration list for PBXNativeTarget "JLSwiftPractice" */;
 			buildPhases = (
+				E61FFBEC91D617DA7D38D59F /* [CP] Check Pods Manifest.lock */,
 				E7CBBB2B1F6E1ED00027BC77 /* Sources */,
 				E7CBBB2C1F6E1ED00027BC77 /* Frameworks */,
 				E7CBBB2D1F6E1ED00027BC77 /* Resources */,
+				73407BE489EB97C72C42B3D4 /* [CP] Embed Pods Frameworks */,
+				78344973A5052C316A629E4A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +280,72 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		73407BE489EB97C72C42B3D4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-JLSwiftPractice/Pods-JLSwiftPractice-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/JSBridgeX/JSBridgeX.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSBridgeX.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JLSwiftPractice/Pods-JLSwiftPractice-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78344973A5052C316A629E4A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JLSwiftPractice/Pods-JLSwiftPractice-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E61FFBEC91D617DA7D38D59F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JLSwiftPractice-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E7CBBB2B1F6E1ED00027BC77 /* Sources */ = {
@@ -410,6 +503,7 @@
 		};
 		E7CBBB581F6E1ED10027BC77 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E5F0C0B292F536956ED1986 /* Pods-JLSwiftPractice.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JLSwiftPractice/Info.plist;
@@ -422,6 +516,7 @@
 		};
 		E7CBBB591F6E1ED10027BC77 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C312C4E2DEBD51543CAD2D28 /* Pods-JLSwiftPractice.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JLSwiftPractice/Info.plist;

@@ -1,0 +1,14 @@
+platform :ios, '8.0'
+use_frameworks!
+
+target "JLSwiftPractice" do
+
+    pod 'SnapKit', '~> 3.2.0'           # 布局框架 https://github.com/SnapKit/SnapKit，同 Masonry
+    pod 'Kingfisher', '~> 3.10.4'       # 缓存图片 https://github.com/onevcat/Kingfisher，同 SDWebImage
+    pod 'Alamofire', '~> 4.5.0'         # 数据请求 https://github.com/Alamofire/Alamofire，同 AFNetworking
+    pod 'SwiftyJSON', '~> 3.1.4'
+    pod 'ObjectMapper', '~> 2.2.8'
+    pod 'AlamofireObjectMapper', '~> 4.1.0'
+    pod 'JSBridgeX', :git => 'https://github.com/uwunmn/JSBridgeX.git'
+
+end
