@@ -15,6 +15,9 @@
 		E7CBBB3D1F6E1ED10027BC77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7CBBB3B1F6E1ED10027BC77 /* LaunchScreen.storyboard */; };
 		E7CBBB481F6E1ED10027BC77 /* JLSwiftPracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBBB471F6E1ED10027BC77 /* JLSwiftPracticeTests.swift */; };
 		E7CBBB531F6E1ED10027BC77 /* JLSwiftPracticeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBBB521F6E1ED10027BC77 /* JLSwiftPracticeUITests.swift */; };
+		E7CBBB611F6E3C140027BC77 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBBB601F6E3C140027BC77 /* MainViewController.swift */; };
+		E7CBBB661F6E61EA0027BC77 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBBB651F6E61EA0027BC77 /* UserModel.swift */; };
+		E7CBBB681F6E6E930027BC77 /* NewsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBBB671F6E6E930027BC77 /* NewsDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		E7CBBB4E1F6E1ED10027BC77 /* JLSwiftPracticeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLSwiftPracticeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CBBB521F6E1ED10027BC77 /* JLSwiftPracticeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSwiftPracticeUITests.swift; sourceTree = "<group>"; };
 		E7CBBB541F6E1ED10027BC77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7CBBB601F6E3C140027BC77 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E7CBBB651F6E61EA0027BC77 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = model/UserModel.swift; sourceTree = "<group>"; };
+		E7CBBB671F6E6E930027BC77 /* NewsDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsDataModel.swift; path = model/NewsDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +127,11 @@
 		E7CBBB311F6E1ED10027BC77 /* JLSwiftPractice */ = {
 			isa = PBXGroup;
 			children = (
+				E7CBBB641F6E61AE0027BC77 /* Models */,
+				E7CBBB631F6E61A50027BC77 /* Views */,
+				E7CBBB621F6E61980027BC77 /* Controllers */,
 				E7CBBB321F6E1ED10027BC77 /* AppDelegate.swift */,
+				E7CBBB601F6E3C140027BC77 /* MainViewController.swift */,
 				E7CBBB341F6E1ED10027BC77 /* ViewController.swift */,
 				E7CBBB361F6E1ED10027BC77 /* Main.storyboard */,
 				E7CBBB391F6E1ED10027BC77 /* Assets.xcassets */,
@@ -147,6 +157,29 @@
 				E7CBBB541F6E1ED10027BC77 /* Info.plist */,
 			);
 			path = JLSwiftPracticeUITests;
+			sourceTree = "<group>";
+		};
+		E7CBBB621F6E61980027BC77 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		E7CBBB631F6E61A50027BC77 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E7CBBB641F6E61AE0027BC77 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E7CBBB651F6E61EA0027BC77 /* UserModel.swift */,
+				E7CBBB671F6E6E930027BC77 /* NewsDataModel.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,7 +385,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7CBBB681F6E6E930027BC77 /* NewsDataModel.swift in Sources */,
+				E7CBBB611F6E3C140027BC77 /* MainViewController.swift in Sources */,
 				E7CBBB351F6E1ED10027BC77 /* ViewController.swift in Sources */,
+				E7CBBB661F6E61EA0027BC77 /* UserModel.swift in Sources */,
 				E7CBBB331F6E1ED10027BC77 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -600,6 +636,7 @@
 				E7CBBB591F6E1ED10027BC77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E7CBBB5A1F6E1ED10027BC77 /* Build configuration list for PBXNativeTarget "JLSwiftPracticeTests" */ = {
 			isa = XCConfigurationList;
@@ -608,6 +645,7 @@
 				E7CBBB5C1F6E1ED10027BC77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E7CBBB5D1F6E1ED10027BC77 /* Build configuration list for PBXNativeTarget "JLSwiftPracticeUITests" */ = {
 			isa = XCConfigurationList;
@@ -616,6 +654,7 @@
 				E7CBBB5F1F6E1ED10027BC77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,7 +7,25 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class NewsDataModel: NSObject {
-
+class NewsDataModel: Mappable {
+    
+    var data: [UserModel]?
+    
+    var version : String?
+    
+    init() {
+        
+    }
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
+        version <- map["version"]
+        data    <- map["data"]
+    }
 }
