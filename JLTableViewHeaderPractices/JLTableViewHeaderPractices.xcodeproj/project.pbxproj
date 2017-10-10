@@ -239,6 +239,7 @@
 				TargetAttributes = {
 					E79A5A591F8A15910096536C = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = H9ZBM36KF6;
 					};
 					E79A5A721F8A15910096536C = {
 						CreatedOnToolsVersion = 7.2;
@@ -501,6 +502,7 @@
 			baseConfigurationReference = AA00B6C763BFC143F28ACF0E /* Pods-JLTableViewHeaderPractices.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H9ZBM36KF6;
 				INFOPLIST_FILE = JLTableViewHeaderPractices/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jack.lin.JLTableViewHeaderPractices;
@@ -513,6 +515,7 @@
 			baseConfigurationReference = BE0D0AB066B90979618F40FB /* Pods-JLTableViewHeaderPractices.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H9ZBM36KF6;
 				INFOPLIST_FILE = JLTableViewHeaderPractices/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jack.lin.JLTableViewHeaderPractices;
@@ -587,6 +590,7 @@
 				E79A5A891F8A15910096536C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E79A5A8A1F8A15910096536C /* Build configuration list for PBXNativeTarget "JLTableViewHeaderPracticesTests" */ = {
 			isa = XCConfigurationList;
@@ -595,6 +599,7 @@
 				E79A5A8C1F8A15910096536C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E79A5A8D1F8A15910096536C /* Build configuration list for PBXNativeTarget "JLTableViewHeaderPracticesUITests" */ = {
 			isa = XCConfigurationList;
@@ -603,6 +608,7 @@
 				E79A5A8F1F8A15910096536C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,639 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6156CC2CE0D7BBEF3A5D6D3B /* libPods-JLTableHeaderViewPractice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E150716048ADCCC8E214C86 /* libPods-JLTableHeaderViewPractice.a */; };
+		C986AC071F7271A000AD18B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C986AC061F7271A000AD18B0 /* main.m */; };
+		C986AC0A1F7271A000AD18B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C986AC091F7271A000AD18B0 /* AppDelegate.m */; };
+		C986AC0D1F7271A000AD18B0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C986AC0C1F7271A000AD18B0 /* ViewController.m */; };
+		C986AC101F7271A000AD18B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C986AC0E1F7271A000AD18B0 /* Main.storyboard */; };
+		C986AC121F7271A000AD18B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C986AC111F7271A000AD18B0 /* Assets.xcassets */; };
+		C986AC151F7271A000AD18B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C986AC131F7271A000AD18B0 /* LaunchScreen.storyboard */; };
+		C986AC201F7271A000AD18B0 /* JLTableHeaderViewPracticeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C986AC1F1F7271A000AD18B0 /* JLTableHeaderViewPracticeTests.m */; };
+		C986AC2B1F7271A000AD18B0 /* JLTableHeaderViewPracticeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C986AC2A1F7271A000AD18B0 /* JLTableHeaderViewPracticeUITests.m */; };
+		C986AC3C1F73587D00AD18B0 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C986AC3B1F73587D00AD18B0 /* MainViewController.m */; };
+		C986AC3F1F739CF900AD18B0 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C986AC3E1F739CF900AD18B0 /* TestViewController.m */; };
+		C986AC421F739D1B00AD18B0 /* Fg_tableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C986AC411F739D1B00AD18B0 /* Fg_tableView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C986AC1C1F7271A000AD18B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C986ABFA1F7271A000AD18B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C986AC011F7271A000AD18B0;
+			remoteInfo = JLTableHeaderViewPractice;
+		};
+		C986AC271F7271A000AD18B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C986ABFA1F7271A000AD18B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C986AC011F7271A000AD18B0;
+			remoteInfo = JLTableHeaderViewPractice;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		57DB6BAC0AE679ACA2C5A895 /* Pods-JLTableHeaderViewPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLTableHeaderViewPractice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JLTableHeaderViewPractice/Pods-JLTableHeaderViewPractice.debug.xcconfig"; sourceTree = "<group>"; };
+		7E150716048ADCCC8E214C86 /* libPods-JLTableHeaderViewPractice.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JLTableHeaderViewPractice.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3BCF7A77F1B3EF2C94F07F4 /* Pods-JLTableHeaderViewPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLTableHeaderViewPractice.release.xcconfig"; path = "Pods/Target Support Files/Pods-JLTableHeaderViewPractice/Pods-JLTableHeaderViewPractice.release.xcconfig"; sourceTree = "<group>"; };
+		C986AC021F7271A000AD18B0 /* JLTableHeaderViewPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLTableHeaderViewPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C986AC061F7271A000AD18B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C986AC081F7271A000AD18B0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C986AC091F7271A000AD18B0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C986AC0B1F7271A000AD18B0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C986AC0C1F7271A000AD18B0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C986AC0F1F7271A000AD18B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C986AC111F7271A000AD18B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C986AC141F7271A000AD18B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C986AC161F7271A000AD18B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C986AC1B1F7271A000AD18B0 /* JLTableHeaderViewPracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLTableHeaderViewPracticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C986AC1F1F7271A000AD18B0 /* JLTableHeaderViewPracticeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JLTableHeaderViewPracticeTests.m; sourceTree = "<group>"; };
+		C986AC211F7271A000AD18B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C986AC261F7271A000AD18B0 /* JLTableHeaderViewPracticeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLTableHeaderViewPracticeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C986AC2A1F7271A000AD18B0 /* JLTableHeaderViewPracticeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JLTableHeaderViewPracticeUITests.m; sourceTree = "<group>"; };
+		C986AC2C1F7271A000AD18B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C986AC3A1F73587D00AD18B0 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		C986AC3B1F73587D00AD18B0 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		C986AC3D1F739CF900AD18B0 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		C986AC3E1F739CF900AD18B0 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		C986AC401F739D1B00AD18B0 /* Fg_tableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fg_tableView.h; sourceTree = "<group>"; };
+		C986AC411F739D1B00AD18B0 /* Fg_tableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fg_tableView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C986ABFF1F7271A000AD18B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6156CC2CE0D7BBEF3A5D6D3B /* libPods-JLTableHeaderViewPractice.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C986AC181F7271A000AD18B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C986AC231F7271A000AD18B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		112440C5B41F36EE1C0B2422 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E150716048ADCCC8E214C86 /* libPods-JLTableHeaderViewPractice.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		73CC87E22C90CD8DF152CAFD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				57DB6BAC0AE679ACA2C5A895 /* Pods-JLTableHeaderViewPractice.debug.xcconfig */,
+				C3BCF7A77F1B3EF2C94F07F4 /* Pods-JLTableHeaderViewPractice.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C986ABF91F7271A000AD18B0 = {
+			isa = PBXGroup;
+			children = (
+				C986AC041F7271A000AD18B0 /* JLTableHeaderViewPractice */,
+				C986AC1E1F7271A000AD18B0 /* JLTableHeaderViewPracticeTests */,
+				C986AC291F7271A000AD18B0 /* JLTableHeaderViewPracticeUITests */,
+				C986AC031F7271A000AD18B0 /* Products */,
+				73CC87E22C90CD8DF152CAFD /* Pods */,
+				112440C5B41F36EE1C0B2422 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C986AC031F7271A000AD18B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C986AC021F7271A000AD18B0 /* JLTableHeaderViewPractice.app */,
+				C986AC1B1F7271A000AD18B0 /* JLTableHeaderViewPracticeTests.xctest */,
+				C986AC261F7271A000AD18B0 /* JLTableHeaderViewPracticeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C986AC041F7271A000AD18B0 /* JLTableHeaderViewPractice */ = {
+			isa = PBXGroup;
+			children = (
+				C986AC081F7271A000AD18B0 /* AppDelegate.h */,
+				C986AC091F7271A000AD18B0 /* AppDelegate.m */,
+				C986AC3D1F739CF900AD18B0 /* TestViewController.h */,
+				C986AC3E1F739CF900AD18B0 /* TestViewController.m */,
+				C986AC401F739D1B00AD18B0 /* Fg_tableView.h */,
+				C986AC411F739D1B00AD18B0 /* Fg_tableView.m */,
+				C986AC3A1F73587D00AD18B0 /* MainViewController.h */,
+				C986AC3B1F73587D00AD18B0 /* MainViewController.m */,
+				C986AC0B1F7271A000AD18B0 /* ViewController.h */,
+				C986AC0C1F7271A000AD18B0 /* ViewController.m */,
+				C986AC0E1F7271A000AD18B0 /* Main.storyboard */,
+				C986AC111F7271A000AD18B0 /* Assets.xcassets */,
+				C986AC131F7271A000AD18B0 /* LaunchScreen.storyboard */,
+				C986AC161F7271A000AD18B0 /* Info.plist */,
+				C986AC051F7271A000AD18B0 /* Supporting Files */,
+			);
+			path = JLTableHeaderViewPractice;
+			sourceTree = "<group>";
+		};
+		C986AC051F7271A000AD18B0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C986AC061F7271A000AD18B0 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C986AC1E1F7271A000AD18B0 /* JLTableHeaderViewPracticeTests */ = {
+			isa = PBXGroup;
+			children = (
+				C986AC1F1F7271A000AD18B0 /* JLTableHeaderViewPracticeTests.m */,
+				C986AC211F7271A000AD18B0 /* Info.plist */,
+			);
+			path = JLTableHeaderViewPracticeTests;
+			sourceTree = "<group>";
+		};
+		C986AC291F7271A000AD18B0 /* JLTableHeaderViewPracticeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C986AC2A1F7271A000AD18B0 /* JLTableHeaderViewPracticeUITests.m */,
+				C986AC2C1F7271A000AD18B0 /* Info.plist */,
+			);
+			path = JLTableHeaderViewPracticeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C986AC011F7271A000AD18B0 /* JLTableHeaderViewPractice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C986AC2F1F7271A000AD18B0 /* Build configuration list for PBXNativeTarget "JLTableHeaderViewPractice" */;
+			buildPhases = (
+				BF8FA7738FFD259AEF603D88 /* [CP] Check Pods Manifest.lock */,
+				C986ABFE1F7271A000AD18B0 /* Sources */,
+				C986ABFF1F7271A000AD18B0 /* Frameworks */,
+				C986AC001F7271A000AD18B0 /* Resources */,
+				A72955C7EBB7CF7B3EDA4D13 /* [CP] Embed Pods Frameworks */,
+				48CA225BA2154A751BEABC64 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JLTableHeaderViewPractice;
+			productName = JLTableHeaderViewPractice;
+			productReference = C986AC021F7271A000AD18B0 /* JLTableHeaderViewPractice.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C986AC1A1F7271A000AD18B0 /* JLTableHeaderViewPracticeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C986AC321F7271A000AD18B0 /* Build configuration list for PBXNativeTarget "JLTableHeaderViewPracticeTests" */;
+			buildPhases = (
+				C986AC171F7271A000AD18B0 /* Sources */,
+				C986AC181F7271A000AD18B0 /* Frameworks */,
+				C986AC191F7271A000AD18B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C986AC1D1F7271A000AD18B0 /* PBXTargetDependency */,
+			);
+			name = JLTableHeaderViewPracticeTests;
+			productName = JLTableHeaderViewPracticeTests;
+			productReference = C986AC1B1F7271A000AD18B0 /* JLTableHeaderViewPracticeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C986AC251F7271A000AD18B0 /* JLTableHeaderViewPracticeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C986AC351F7271A000AD18B0 /* Build configuration list for PBXNativeTarget "JLTableHeaderViewPracticeUITests" */;
+			buildPhases = (
+				C986AC221F7271A000AD18B0 /* Sources */,
+				C986AC231F7271A000AD18B0 /* Frameworks */,
+				C986AC241F7271A000AD18B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C986AC281F7271A000AD18B0 /* PBXTargetDependency */,
+			);
+			name = JLTableHeaderViewPracticeUITests;
+			productName = JLTableHeaderViewPracticeUITests;
+			productReference = C986AC261F7271A000AD18B0 /* JLTableHeaderViewPracticeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C986ABFA1F7271A000AD18B0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = JackLin;
+				TargetAttributes = {
+					C986AC011F7271A000AD18B0 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = H9ZBM36KF6;
+						ProvisioningStyle = Automatic;
+					};
+					C986AC1A1F7271A000AD18B0 = {
+						CreatedOnToolsVersion = 8.3.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C986AC011F7271A000AD18B0;
+					};
+					C986AC251F7271A000AD18B0 = {
+						CreatedOnToolsVersion = 8.3.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C986AC011F7271A000AD18B0;
+					};
+				};
+			};
+			buildConfigurationList = C986ABFD1F7271A000AD18B0 /* Build configuration list for PBXProject "JLTableHeaderViewPractice" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C986ABF91F7271A000AD18B0;
+			productRefGroup = C986AC031F7271A000AD18B0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C986AC011F7271A000AD18B0 /* JLTableHeaderViewPractice */,
+				C986AC1A1F7271A000AD18B0 /* JLTableHeaderViewPracticeTests */,
+				C986AC251F7271A000AD18B0 /* JLTableHeaderViewPracticeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C986AC001F7271A000AD18B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C986AC151F7271A000AD18B0 /* LaunchScreen.storyboard in Resources */,
+				C986AC121F7271A000AD18B0 /* Assets.xcassets in Resources */,
+				C986AC101F7271A000AD18B0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C986AC191F7271A000AD18B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C986AC241F7271A000AD18B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		48CA225BA2154A751BEABC64 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-JLTableHeaderViewPractice/Pods-JLTableHeaderViewPractice-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JLTableHeaderViewPractice/Pods-JLTableHeaderViewPractice-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A72955C7EBB7CF7B3EDA4D13 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JLTableHeaderViewPractice/Pods-JLTableHeaderViewPractice-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF8FA7738FFD259AEF603D88 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JLTableHeaderViewPractice-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C986ABFE1F7271A000AD18B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C986AC0D1F7271A000AD18B0 /* ViewController.m in Sources */,
+				C986AC0A1F7271A000AD18B0 /* AppDelegate.m in Sources */,
+				C986AC421F739D1B00AD18B0 /* Fg_tableView.m in Sources */,
+				C986AC071F7271A000AD18B0 /* main.m in Sources */,
+				C986AC3C1F73587D00AD18B0 /* MainViewController.m in Sources */,
+				C986AC3F1F739CF900AD18B0 /* TestViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C986AC171F7271A000AD18B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C986AC201F7271A000AD18B0 /* JLTableHeaderViewPracticeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C986AC221F7271A000AD18B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C986AC2B1F7271A000AD18B0 /* JLTableHeaderViewPracticeUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C986AC1D1F7271A000AD18B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C986AC011F7271A000AD18B0 /* JLTableHeaderViewPractice */;
+			targetProxy = C986AC1C1F7271A000AD18B0 /* PBXContainerItemProxy */;
+		};
+		C986AC281F7271A000AD18B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C986AC011F7271A000AD18B0 /* JLTableHeaderViewPractice */;
+			targetProxy = C986AC271F7271A000AD18B0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C986AC0E1F7271A000AD18B0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C986AC0F1F7271A000AD18B0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C986AC131F7271A000AD18B0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C986AC141F7271A000AD18B0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C986AC2D1F7271A000AD18B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C986AC2E1F7271A000AD18B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C986AC301F7271A000AD18B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57DB6BAC0AE679ACA2C5A895 /* Pods-JLTableHeaderViewPractice.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H9ZBM36KF6;
+				INFOPLIST_FILE = JLTableHeaderViewPractice/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLTableHeaderViewPractice;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C986AC311F7271A000AD18B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3BCF7A77F1B3EF2C94F07F4 /* Pods-JLTableHeaderViewPractice.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H9ZBM36KF6;
+				INFOPLIST_FILE = JLTableHeaderViewPractice/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLTableHeaderViewPractice;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C986AC331F7271A000AD18B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = JLTableHeaderViewPracticeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLTableHeaderViewPracticeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JLTableHeaderViewPractice.app/JLTableHeaderViewPractice";
+			};
+			name = Debug;
+		};
+		C986AC341F7271A000AD18B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = JLTableHeaderViewPracticeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLTableHeaderViewPracticeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JLTableHeaderViewPractice.app/JLTableHeaderViewPractice";
+			};
+			name = Release;
+		};
+		C986AC361F7271A000AD18B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = JLTableHeaderViewPracticeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLTableHeaderViewPracticeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = JLTableHeaderViewPractice;
+			};
+			name = Debug;
+		};
+		C986AC371F7271A000AD18B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = JLTableHeaderViewPracticeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLTableHeaderViewPracticeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = JLTableHeaderViewPractice;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C986ABFD1F7271A000AD18B0 /* Build configuration list for PBXProject "JLTableHeaderViewPractice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C986AC2D1F7271A000AD18B0 /* Debug */,
+				C986AC2E1F7271A000AD18B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C986AC2F1F7271A000AD18B0 /* Build configuration list for PBXNativeTarget "JLTableHeaderViewPractice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C986AC301F7271A000AD18B0 /* Debug */,
+				C986AC311F7271A000AD18B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C986AC321F7271A000AD18B0 /* Build configuration list for PBXNativeTarget "JLTableHeaderViewPracticeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C986AC331F7271A000AD18B0 /* Debug */,
+				C986AC341F7271A000AD18B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C986AC351F7271A000AD18B0 /* Build configuration list for PBXNativeTarget "JLTableHeaderViewPracticeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C986AC361F7271A000AD18B0 /* Debug */,
+				C986AC371F7271A000AD18B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C986ABFA1F7271A000AD18B0 /* Project object */;
+}

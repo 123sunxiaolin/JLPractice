@@ -17,7 +17,9 @@
 static const CGFloat kTitleViewHeight = 120.f;
 static const CGFloat kHeaderViewHeight = 40.f;
 
-@interface MainViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface MainViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>{
+    BOOL _isHeaderViewOpened;
+}
 
 @property (nonatomic, strong) UIButton *testButton;
 
@@ -35,12 +37,14 @@ static const CGFloat kHeaderViewHeight = 40.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"测试主视图";
+    self.title = @"";
     self.view.backgroundColor = [UIColor whiteColor];
+    _isHeaderViewOpened = NO;
     
     [self.view addSubview:self.titleView];
     CGFloat maxY = CGRectGetMaxY(self.titleView.frame);
     self.mainTableView.mj_y = maxY;
+    self.mainTableView.mj_h = SCREEN_HEIGHT - maxY;
     [self.view addSubview:self.mainTableView];
 }
 
@@ -68,7 +72,7 @@ static const CGFloat kHeaderViewHeight = 40.f;
 
 - (UITableView *)mainTableView{
     if (!_mainTableView) {
-        _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 124, SCREEN_WIDTH, SCREEN_HEIGHT - kTitleViewHeight)];
+        _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 124, SCREEN_WIDTH, SCREEN_HEIGHT - kTitleViewHeight - 124)];
         _mainTableView.dataSource = self;
         _mainTableView.delegate = self;
         _mainTableView.tableFooterView = [UIView new];
@@ -83,7 +87,9 @@ static const CGFloat kHeaderViewHeight = 40.f;
 - (void)onPullDownRefresh:(id *)sender{
     
     sleep(2);
-    [self.mainTableView.mj_header endRefreshing];
+    [self.mainTableView.mj_header endRefreshingWithCompletionBlock:^{
+        [self.mainTableView setContentOffset:CGPointMake(0, kHeaderViewHeight) animated:YES];
+    }];
 }
 
 #pragma mark - UITableViewDataSource
@@ -92,7 +98,7 @@ static const CGFloat kHeaderViewHeight = 40.f;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 100;
+    return 40;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -117,15 +123,114 @@ static const CGFloat kHeaderViewHeight = 40.f;
 #pragma mark - UITableViewDelegate
 
 #pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+    CGFloat y = scrollView.mj_offsetY;
+    if (y > 0 && y <= kHeaderViewHeight) {
+        if (y > kHeaderViewHeight / 2) {
+            [self.mainTableView setContentOffset:CGPointMake(0, kHeaderViewHeight) animated:YES];
+            _isHeaderViewOpened = NO;
+            //self.mainTableView.mj_offsetY = kHeaderViewHeight;
+        }else{
+            [self.mainTableView setContentOffset:CGPointMake(0, 0) animated:YES];
+            _isHeaderViewOpened = YES;
+            //self.mainTableView.mj_offsetY = 0;
+        }
+    }
+}
+
 /**
  向上滑动，offsetY > 0, 向下滑动， offsetY < 0
  */
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    
     CGFloat y = scrollView.mj_offsetY;
+    
+    /*if (y > kTitleViewHeight * 0.25 + kHeaderViewHeight) {
+        
+        self.title = @"测试主视图";
+    }else{
+        self.title = @"";
+    }*/
+    
+    
+    if (self.titleView.mj_y <= 64 - kTitleViewHeight * 0.5) {
+        self.title = @"测试主视图";
+        self.mainTableView.mj_h = SCREEN_HEIGHT - CGRectGetMaxY(self.titleView.frame);
+    }else{
+        self.title = @"";
+        self.mainTableView.mj_h = SCREEN_HEIGHT - CGRectGetMaxY(self.titleView.frame);
+    }
+    
+    
+    NSLog(@"offsetY = %f", y);
+    if (y > kHeaderViewHeight) {
+        
+        if (self.titleView.mj_y + self.titleView.mj_h > 64){
+            
+            CGFloat offsetY = y - kHeaderViewHeight;
+            offsetY = offsetY/2;
+            
+            CGFloat dif = self.titleView.mj_y + self.titleView.mj_h - 64;
+            offsetY = MIN(dif, offsetY);
+            
+            
+            [UIView animateWithDuration:.3 animations:^{
+                self.titleView.mj_y -= offsetY;
+                self.mainTableView.mj_y -= offsetY;
+                //self.mainTableView.mj_h += offsetY;
+            }];
+            
+            //self.mainTableView.contentSize = CGSizeMake(self.mainTableView.contentSize.width, self.mainTableView.contentSize.height + offsetY);
+        }
+    }else if(y <= 0){
+        CGFloat offsetY = fabs(y);
+        if (self.titleView.mj_y < 64.f) {
+            
+            CGFloat dif = 64.f - self.titleView.mj_y;
+            offsetY = MIN(dif, offsetY);
+            
+            self.titleView.mj_y += offsetY;
+            self.mainTableView.mj_y += offsetY;
+            //self.mainTableView.mj_h -= offsetY;
+            
+            /*[UIView animateWithDuration:.3 animations:^{
+                
+                
+            }];*/
+            
+            //self.mainTableView.contentSize = CGSizeMake(self.mainTableView.contentSize.width, self.mainTableView.contentSize.height - offsetY);
+        }
+    }
     
     if (y > 0) {//上滑动
         
-        if (y <= kHeaderViewHeight) {
+        /*if (self.titleView.mj_y + self.titleView.mj_h > 64) {
+            
+            //CGFloat offsetY = y - kHeaderViewHeight;
+            
+            self.titleView.mj_y -= y;
+            self.mainTableView.mj_y -= y;
+            self.mainTableView.mj_h += y;
+            self.mainTableView.contentSize = CGSizeMake(self.mainTableView.contentSize.width, self.mainTableView.contentSize.height + y);
+        }*/
+        
+        /*if (!_isHeaderViewOpened) {
+            if (self.titleView.mj_y + self.titleView.mj_h > 64) {
+                
+                CGFloat offsetY = y - kHeaderViewHeight;
+                
+                self.titleView.mj_y -= offsetY;
+                self.mainTableView.mj_y -= offsetY;
+                self.mainTableView.mj_h += offsetY;
+                self.mainTableView.contentSize = CGSizeMake(self.mainTableView.contentSize.width, self.mainTableView.contentSize.height + offsetY);
+            }
+        }*/
+        
+        
+        /*if (y <= kHeaderViewHeight) {
             if (y > kHeaderViewHeight / 2) {
                 [self.mainTableView setContentOffset:CGPointMake(0, kHeaderViewHeight) animated:YES];
                 //self.mainTableView.mj_offsetY = kHeaderViewHeight;
@@ -137,24 +242,27 @@ static const CGFloat kHeaderViewHeight = 40.f;
         }else{
             
             if (self.titleView.mj_y + self.titleView.mj_h > 64) {
-                self.titleView.mj_y -= y;
-                self.mainTableView.mj_y -= y;
-                self.mainTableView.mj_h += y;
-                self.mainTableView.contentSize = CGSizeMake(self.mainTableView.contentSize.width, self.mainTableView.contentSize.height + y);
+                
+                CGFloat offsetY = y - kHeaderViewHeight;
+                
+                self.titleView.mj_y -= offsetY;
+                self.mainTableView.mj_y -= offsetY;
+                self.mainTableView.mj_h += offsetY;
+                self.mainTableView.contentSize = CGSizeMake(self.mainTableView.contentSize.width, self.mainTableView.contentSize.height + offsetY);
             }
             
-        }
+        }*/
         
         
     }else{
         
-        CGFloat offsetY = fabs(y);
+        /*CGFloat offsetY = fabs(y);
         if (self.titleView.mj_y < 64.f) {
             self.titleView.mj_y += offsetY;
             self.mainTableView.mj_y += offsetY;
             self.mainTableView.mj_h -= offsetY;
             self.mainTableView.contentSize = CGSizeMake(self.mainTableView.contentSize.width, self.mainTableView.contentSize.height - offsetY);
-        }
+        }*/
     }
     
     

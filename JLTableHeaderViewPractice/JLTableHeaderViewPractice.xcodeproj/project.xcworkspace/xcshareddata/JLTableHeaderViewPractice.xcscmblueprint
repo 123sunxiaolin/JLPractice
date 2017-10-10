@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2015E507AB474A5B0BB94638542407F3F3D9DD6E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2015E507AB474A5B0BB94638542407F3F3D9DD6E" : 9223372036854775807,
+    "2A8CC76D0984F5186F869B6CBF35034B58A5ACD9" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "83373AED-C223-4141-B8AD-A0A548B6E8BB",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2015E507AB474A5B0BB94638542407F3F3D9DD6E" : "JLPractice\/",
+    "2A8CC76D0984F5186F869B6CBF35034B58A5ACD9" : "JLPractice\/JLTableHeaderViewPractice\/JLTableHeaderViewPractice\/MJRefresh\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "JLTableHeaderViewPractice",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "JLTableHeaderViewPractice\/JLTableHeaderViewPractice.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/123sunxiaolin\/JLPractice.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2015E507AB474A5B0BB94638542407F3F3D9DD6E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CoderMJLee\/MJRefresh.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2A8CC76D0984F5186F869B6CBF35034B58A5ACD9"
+    }
+  ]
+}
