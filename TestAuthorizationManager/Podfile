@@ -1,0 +1,7 @@
+platform :ios, ‘8.0’
+
+target 'TestAuthorizationManager' do
+    
+pod 'JLAuthorizationManager', '~> 1.0.0'
+
+end

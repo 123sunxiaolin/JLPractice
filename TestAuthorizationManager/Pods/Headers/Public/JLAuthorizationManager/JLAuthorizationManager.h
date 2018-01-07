@@ -1,0 +1,1 @@
+../../../JLAuthorizationManager/JLAuthorizationManager/JLAuthorizationManager.h
