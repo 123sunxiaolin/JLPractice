@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C914ECB3200473DC00508E57 /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = C914ECB0200473DC00508E57 /* DALabeledCircularProgressView.m */; };
+		C914ECB4200473DC00508E57 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = C914ECB1200473DC00508E57 /* DACircularProgressView.m */; };
 		C9AA273F2001F5F1004F147B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AA273E2001F5F1004F147B /* AppDelegate.m */; };
 		C9AA27422001F5F1004F147B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AA27412001F5F1004F147B /* ViewController.m */; };
 		C9AA27452001F5F1004F147B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9AA27432001F5F1004F147B /* Main.storyboard */; };
@@ -35,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C914ECAF200473DC00508E57 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		C914ECB0200473DC00508E57 /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALabeledCircularProgressView.m; sourceTree = "<group>"; };
+		C914ECB1200473DC00508E57 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
+		C914ECB2200473DC00508E57 /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
 		C9AA273A2001F5F1004F147B /* JLUnitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLUnitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9AA273D2001F5F1004F147B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9AA273E2001F5F1004F147B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -78,9 +84,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C914ECAE200473AD00508E57 /* progressBar */ = {
+			isa = PBXGroup;
+			children = (
+				C914ECAF200473DC00508E57 /* DACircularProgressView.h */,
+				C914ECB1200473DC00508E57 /* DACircularProgressView.m */,
+				C914ECB2200473DC00508E57 /* DALabeledCircularProgressView.h */,
+				C914ECB0200473DC00508E57 /* DALabeledCircularProgressView.m */,
+			);
+			path = progressBar;
+			sourceTree = "<group>";
+		};
 		C9AA27312001F5F1004F147B = {
 			isa = PBXGroup;
 			children = (
+				C914ECAE200473AD00508E57 /* progressBar */,
 				C9AA273C2001F5F1004F147B /* JLUnitTest */,
 				C9AA27552001F5F1004F147B /* JLUnitTestTests */,
 				C9AA27602001F5F2004F147B /* JLUnitTestUITests */,
@@ -265,7 +283,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C914ECB4200473DC00508E57 /* DACircularProgressView.m in Sources */,
 				C9AA27422001F5F1004F147B /* ViewController.m in Sources */,
+				C914ECB3200473DC00508E57 /* DALabeledCircularProgressView.m in Sources */,
 				C9AA274D2001F5F1004F147B /* main.m in Sources */,
 				C9AA273F2001F5F1004F147B /* AppDelegate.m in Sources */,
 			);
@@ -433,6 +453,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H9ZBM36KF6;
 				INFOPLIST_FILE = JLUnitTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLUnitTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -447,6 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H9ZBM36KF6;
 				INFOPLIST_FILE = JLUnitTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jacklin.com.JLUnitTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
