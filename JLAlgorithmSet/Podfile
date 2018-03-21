@@ -1,0 +1,10 @@
+platform :ios, ‘8.0’
+
+source 'https://github.com/CocoaPods/Specs.git' #公有库地址
+source 'http://code.workinggo.com/guoqiang/SXSpecs.git' #私有库地址
+
+target 'JLAlgorithmSet' do
+    
+pod 'SPLibray', '~> 0.1.1'
+
+end

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		6ECEF955BA2AE0E3A1DA75B7 /* Pods_JLSwiftPractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCB21CC4FD162BD670325621 /* Pods_JLSwiftPractice.framework */; };
+		E75B02F81F930CD600413FA8 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B02F71F930CD600413FA8 /* MainNavigationController.swift */; };
+		E75B02FA1F93129800413FA8 /* AdvertiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B02F91F93129800413FA8 /* AdvertiseViewController.swift */; };
+		E7787BE81F92F6A00012436F /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7787BE71F92F6A00012436F /* UIImage+Extension.swift */; };
+		E7787BEA1F92FD790012436F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7787BE91F92FD790012436F /* Date+Extension.swift */; };
+		E7787BEE1F93006D0012436F /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7787BED1F93006D0012436F /* MainTabBarViewController.swift */; };
 		E7CBBB331F6E1ED10027BC77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBBB321F6E1ED10027BC77 /* AppDelegate.swift */; };
 		E7CBBB351F6E1ED10027BC77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBBB341F6E1ED10027BC77 /* ViewController.swift */; };
 		E7CBBB381F6E1ED10027BC77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7CBBB361F6E1ED10027BC77 /* Main.storyboard */; };
@@ -41,6 +46,11 @@
 		6E5F0C0B292F536956ED1986 /* Pods-JLSwiftPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSwiftPractice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JLSwiftPractice/Pods-JLSwiftPractice.debug.xcconfig"; sourceTree = "<group>"; };
 		C312C4E2DEBD51543CAD2D28 /* Pods-JLSwiftPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSwiftPractice.release.xcconfig"; path = "Pods/Target Support Files/Pods-JLSwiftPractice/Pods-JLSwiftPractice.release.xcconfig"; sourceTree = "<group>"; };
 		CCB21CC4FD162BD670325621 /* Pods_JLSwiftPractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JLSwiftPractice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E75B02F71F930CD600413FA8 /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		E75B02F91F93129800413FA8 /* AdvertiseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvertiseViewController.swift; sourceTree = "<group>"; };
+		E7787BE71F92F6A00012436F /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		E7787BE91F92FD790012436F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		E7787BED1F93006D0012436F /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		E7CBBB2F1F6E1ED10027BC77 /* JLSwiftPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLSwiftPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CBBB321F6E1ED10027BC77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7CBBB341F6E1ED10027BC77 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +112,42 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E7787BE41F92F5780012436F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E7787BEB1F93002D0012436F /* Controller */,
+				E7787BE61F92F65B0012436F /* Category */,
+				E7787BE51F92F58C0012436F /* VIew */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		E7787BE51F92F58C0012436F /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = VIew;
+			sourceTree = "<group>";
+		};
+		E7787BE61F92F65B0012436F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				E7787BE71F92F6A00012436F /* UIImage+Extension.swift */,
+				E7787BE91F92FD790012436F /* Date+Extension.swift */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		E7787BEB1F93002D0012436F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E7787BED1F93006D0012436F /* MainTabBarViewController.swift */,
+				E75B02F71F930CD600413FA8 /* MainNavigationController.swift */,
+				E75B02F91F93129800413FA8 /* AdvertiseViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		E7CBBB261F6E1ED00027BC77 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +173,7 @@
 		E7CBBB311F6E1ED10027BC77 /* JLSwiftPractice */ = {
 			isa = PBXGroup;
 			children = (
+				E7787BE41F92F5780012436F /* Main */,
 				E7CBBB641F6E61AE0027BC77 /* Models */,
 				E7CBBB631F6E61A50027BC77 /* Views */,
 				E7CBBB621F6E61980027BC77 /* Controllers */,
@@ -385,10 +432,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E75B02F81F930CD600413FA8 /* MainNavigationController.swift in Sources */,
 				E7CBBB681F6E6E930027BC77 /* NewsDataModel.swift in Sources */,
+				E7787BEE1F93006D0012436F /* MainTabBarViewController.swift in Sources */,
 				E7CBBB611F6E3C140027BC77 /* MainViewController.swift in Sources */,
 				E7CBBB351F6E1ED10027BC77 /* ViewController.swift in Sources */,
+				E7787BE81F92F6A00012436F /* UIImage+Extension.swift in Sources */,
+				E7787BEA1F92FD790012436F /* Date+Extension.swift in Sources */,
 				E7CBBB661F6E61EA0027BC77 /* UserModel.swift in Sources */,
+				E75B02FA1F93129800413FA8 /* AdvertiseViewController.swift in Sources */,
 				E7CBBB331F6E1ED10027BC77 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
