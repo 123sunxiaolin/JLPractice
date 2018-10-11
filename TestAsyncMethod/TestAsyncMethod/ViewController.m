@@ -26,8 +26,43 @@
     self.leftLabel.text = @"关于是阿AV和v 因为FVF氨基酸的后加上的很多很多多喝水较好的是的收到就好舌尖上的是但是金黄色的华盛顿";
     self.rightLabel.text = @"vcvshvvcshdvchdcvshchsvdchvsh";
     
+    [self testInvocation];
 }
 
+#pragma mark - Invocation
+
+- (void)testInvocation{
+    
+    SEL selector = @selector(testArguments:args2:);
+    NSLog(@"selector encode type = %s", @encode(SEL));
+    NSMethodSignature *signature = [self methodSignatureForSelector:selector];
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+    invocation.selector = selector;
+    invocation.target = self;
+    
+    NSString *arg1 = @"1111";
+    NSString *arg2 = @"2222";
+    [invocation setArgument:&arg1 atIndex:2];
+    [invocation setArgument:&arg2 atIndex:3];
+    
+    [invocation retainArguments];
+    [invocation invoke];
+    
+    if (signature.methodReturnLength > 0) {
+        NSString *returnValue = nil;
+        [invocation getReturnValue:&returnValue];
+        NSLog(@"return Vlaue = %@", returnValue);
+        
+    }
+    
+}
+
+- (NSString *)testArguments:(NSString *)args1 args2:(NSString *)args2{
+    NSLog(@"%@ - %@", args1, args2);
+    return [NSString stringWithFormat:@"%@ - %@", args1, args2];
+}
+
+#pragma mark - Asynchrous
 - (void)asyncMainQueue{
     // 0 2 1 3 主队列里只包含一个线程，遵循先进先出的逻辑，即使带有sleep，也遵循队列的顺序
     dispatch_async(dispatch_get_main_queue(), ^{
