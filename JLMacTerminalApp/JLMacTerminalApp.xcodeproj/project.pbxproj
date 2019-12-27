@@ -23,6 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E71483E723863F5E00DE68D7 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E7CEBCC023855AB80098EB97 /* JLMacTerminalApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = JLMacTerminalApp; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CEBCC323855AB80098EB97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +58,7 @@
 		E7CEBCC223855AB80098EB97 /* JLMacTerminalApp */ = {
 			isa = PBXGroup;
 			children = (
+				E71483E723863F5E00DE68D7 /* main.cpp */,
 				E7CEBCC323855AB80098EB97 /* main.m */,
 			);
 			path = JLMacTerminalApp;
