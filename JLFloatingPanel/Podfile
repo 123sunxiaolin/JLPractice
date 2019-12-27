@@ -1,0 +1,6 @@
+# Uncomment the next line to define a global platform for your project
+
+target 'SamplesObjC' do
+  use_frameworks!
+  pod 'FloatingPanel'
+end
