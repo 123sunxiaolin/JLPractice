@@ -1,6 +1,8 @@
 # Uncomment the next line to define a global platform for your project
 
 target 'SamplesObjC' do
-  use_frameworks!
-  pod 'FloatingPanel'
+  #use_frameworks!
+  #pod 'FloatingPanel'
+  pod 'FloatingPanelObjC', git: 'https://github.com/SCENEE/FloatingPanel.git', branch: "support-objc"
+  
 end
