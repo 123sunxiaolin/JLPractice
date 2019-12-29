@@ -84,3 +84,14 @@
 
 @end
 
+
+@implementation UITraitCollection (Extension)
+
+- (BOOL)shouldUpdateLayoutWithPreviousCollection:(UITraitCollection *)previousCollection {
+    return previousCollection.horizontalSizeClass != self.horizontalSizeClass
+    || previousCollection.verticalSizeClass != self.verticalSizeClass
+    || previousCollection.preferredContentSizeCategory != self.preferredContentSizeCategory
+    || previousCollection.layoutDirection != self.layoutDirection;
+}
+
+@end

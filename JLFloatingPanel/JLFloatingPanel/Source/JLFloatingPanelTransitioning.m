@@ -11,12 +11,13 @@
 #import "JLFloatingPanelPassThroughView.h"
 #import "JLFloatingPanelBackdropView.h"
 
-@implementation JLFloatingPanelTransitioning
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedViewController:(UIViewController *)presentedViewController presentingViewController:(UIViewController *)presentingViewController sourceViewController:(UIViewController *)sourceViewController {
+@implementation JLFloatingPanelModalTransition
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
     return [[JLFloatingPanelModalPresentTransition alloc] init];
 }
 
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedViewController:(UIViewController *)dismissedViewController {
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
     return [[JLFloatingPanelModalDismissTransition alloc] init];
 }
 

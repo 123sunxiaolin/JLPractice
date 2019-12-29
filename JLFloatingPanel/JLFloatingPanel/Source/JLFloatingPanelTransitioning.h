@@ -11,14 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JLFloatingPanelTransitioning : NSObject
-- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedViewController:(UIViewController *)presentedViewController
-                                                                   presentingViewController:(UIViewController *)presentingViewController sourceViewController:(UIViewController *)sourceViewController;
-
-- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedViewController:(UIViewController *)dismissedViewController;
-
-- (UIPresentationController *)presentationControllerWithPresentedViewController:(UIViewController *)presentedViewController
-                                                       presentingViewController:(UIViewController *)presentingViewController sourceViewController:(UIViewController *)sourceViewController;
+@interface JLFloatingPanelModalTransition : NSObject <UIViewControllerTransitioningDelegate>
 
 @end
 

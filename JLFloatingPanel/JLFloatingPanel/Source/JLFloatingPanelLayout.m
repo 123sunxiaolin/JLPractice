@@ -284,17 +284,11 @@
 @property (nonatomic, assign, readonly) CGFloat halfInset;
 @property (nonatomic, assign, readonly) CGFloat tipInset;
 @property (nonatomic, assign, readonly) CGFloat hiddenInset;
-@property (nonatomic, copy, readonly) NSSet <NSNumber *>* supportedPositions;
-
-@property (nonatomic, assign, readonly) JLFloatingPanelPosition topMostState;
-@property (nonatomic, assign, readonly) JLFloatingPanelPosition bottomMostState;
 
 @property (nonatomic, assign, readonly) CGFloat topY;
 @property (nonatomic, assign, readonly) CGFloat bottomY;
 @property (nonatomic, assign, readonly) CGFloat topMaxY;
 @property (nonatomic, assign, readonly) CGFloat bottomMaxY;
-
-@property (nonatomic, assign, readonly) UIEdgeInsets adjustedContentInsets;
 
 @end
 
@@ -687,6 +681,51 @@
     }
 }
 
+- (CGFloat)positionYForPosition:(JLFloatingPanelPosition)position {
+    switch (position) {
+        case JLFloatingPanelPositionFull: {
+            if ([self.layout conformsToProtocol:@protocol(JLFloatingPanelIntrinsicLayout)]) {
+                return self.surfaceView.superview.bounds.size.height - self.surfaceView.bounds.size.height;
+            }
+            switch (self.layout.positionReference) {
+                case JLFloatingPanelLayoutReferenceFromSafeArea:
+                    return self.safeAreaInsets.top + self.fullInset;
+                    break;
+                case  JLFloatingPanelLayoutReferenceFromSuperview:
+                    return self.fullInset;
+                    break;
+            }
+        }
+            break;
+        case JLFloatingPanelPositionHalf: {
+            switch (self.layout.positionReference) {
+                case JLFloatingPanelLayoutReferenceFromSafeArea:
+                    return self.surfaceView.superview.bounds.size.height - (self.safeAreaInsets.bottom + self.halfInset);
+                    break;
+                case  JLFloatingPanelLayoutReferenceFromSuperview:
+                    return self.surfaceView.superview.bounds.size.height - self.halfInset;
+                    break;
+            }
+        }
+            break;
+        case JLFloatingPanelPositionTip: {
+            switch (self.layout.positionReference) {
+                case JLFloatingPanelLayoutReferenceFromSafeArea:
+                    return self.surfaceView.superview.bounds.size.height - (self.safeAreaInsets.bottom + self.tipInset);
+                    break;
+                case  JLFloatingPanelLayoutReferenceFromSuperview:
+                    return self.surfaceView.superview.bounds.size.height - self.tipInset;
+                    break;
+            }
+        }
+            break;
+            
+        case JLFloatingPanelPositionHidden:
+            return self.surfaceView.superview.bounds.size.height - self.hiddenInset;
+            break;
+    }
+}
+
 #pragma mark - Private
 - (void)initilizeValues {
     self.initialConst = 0;
@@ -748,51 +787,6 @@
     self.intrinsicHeight = MAX(intrinsicHeight, 0.0);
     
     NSLog(@"Update intrinsic height = %f, surface(height) = %f, content(height) = %f, content safe area(bottom) = %f", intrinsicHeight, self.surfaceView.frame.size.height, self.surfaceView.contentView.frame.size.height, safeAreaBottom);
-}
-
-- (CGFloat)positionYForPosition:(JLFloatingPanelPosition)position {
-    switch (position) {
-        case JLFloatingPanelPositionFull: {
-            if ([self.layout conformsToProtocol:@protocol(JLFloatingPanelIntrinsicLayout)]) {
-                return self.surfaceView.superview.bounds.size.height - self.surfaceView.bounds.size.height;
-            }
-            switch (self.layout.positionReference) {
-                case JLFloatingPanelLayoutReferenceFromSafeArea:
-                    return self.safeAreaInsets.top + self.fullInset;
-                    break;
-                case  JLFloatingPanelLayoutReferenceFromSuperview:
-                    return self.fullInset;
-                    break;
-            }
-        }
-            break;
-        case JLFloatingPanelPositionHalf: {
-            switch (self.layout.positionReference) {
-                case JLFloatingPanelLayoutReferenceFromSafeArea:
-                    return self.surfaceView.superview.bounds.size.height - (self.safeAreaInsets.bottom + self.halfInset);
-                    break;
-                case  JLFloatingPanelLayoutReferenceFromSuperview:
-                    return self.surfaceView.superview.bounds.size.height - self.halfInset;
-                    break;
-            }
-        }
-            break;
-        case JLFloatingPanelPositionTip: {
-            switch (self.layout.positionReference) {
-                case JLFloatingPanelLayoutReferenceFromSafeArea:
-                    return self.surfaceView.superview.bounds.size.height - (self.safeAreaInsets.bottom + self.tipInset);
-                    break;
-                case  JLFloatingPanelLayoutReferenceFromSuperview:
-                    return self.surfaceView.superview.bounds.size.height - self.tipInset;
-                    break;
-            }
-        }
-            break;
-            
-        case JLFloatingPanelPositionHidden:
-            return self.surfaceView.superview.bounds.size.height - self.hiddenInset;
-            break;
-    }
 }
 
 - (void)resetFullConstraint {

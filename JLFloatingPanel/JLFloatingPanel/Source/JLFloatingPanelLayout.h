@@ -34,12 +34,21 @@ JLFloatingPanelBackdropView;
 @interface JLFloatingPanelLayoutAdapter : NSObject
 
 @property (nonatomic, weak) id <JLFloatingPanelLayout> layout;
-
 @property (nonatomic, weak) JLFloatingPanelController *panelController;
+@property (nonatomic, assign, readonly) UIEdgeInsets adjustedContentInsets;
+
+@property (nonatomic, assign, readonly) JLFloatingPanelPosition topMostState;
+@property (nonatomic, assign, readonly) JLFloatingPanelPosition bottomMostState;
+
+@property (nonatomic, copy, readonly) NSSet <NSNumber *>* supportedPositions;
 
 - (void)updateHeight;
+- (BOOL)isVaildWithPosition:(JLFloatingPanelPosition)position;
+
+- (void)activateFixedLayout;
 - (void)activateLayoutWithPosition:(JLFloatingPanelPosition)position;
 - (void)prepareLayoutInViewController:(JLFloatingPanelController *)panelController;
+- (CGFloat)positionYForPosition:(JLFloatingPanelPosition)position;
 
 - (instancetype)initWithSurfaceView:(JLFloatingPanelSurfaceView *)surfaceView
                        backdropView:(JLFloatingPanelBackdropView *)backdropView

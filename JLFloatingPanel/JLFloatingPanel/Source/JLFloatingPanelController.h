@@ -109,9 +109,7 @@ typedef NS_ENUM(NSInteger, JLContentMode) {
 /// This property specifies how the content area of the tracking scroll view is modified using `adjustedContentInsets`. The default value of this property is FloatingPanelController.ContentInsetAdjustmentBehavior.always.
 @property (nonatomic, assign) JLContentInsetAdjustmentBehavior contentInsetAdjustmentBehavior;
 
-/*
-  A Boolean value that determines whether the removal interaction is enabled.
- */
+/// A Boolean value that determines whether the removal interaction is enabled.
 @property (nonatomic, assign) BOOL isRemovalInteractionEnabled;
 
 /// The view controller responsible for the content portion of the floating panel.
@@ -121,8 +119,61 @@ typedef NS_ENUM(NSInteger, JLContentMode) {
 
 - (instancetype)initWithDelegate:(id <JLFloatingPanelControllerDelegate>)delegate;
 
-- (void)hideWithAnimated:(BOOL)animated completion:(dispatch_block_t __nullable)completion;
+/// Sets the view controller responsible for the content portion of the floating panel.
+- (void)setContentVC:(UIViewController *)contentViewController;
+
+/// Shows the surface view at the initial position defined by the current layout
 - (void)showWithAnimated:(BOOL)animated completion:(dispatch_block_t __nullable)completion;
+
+/// Hides the surface view to the hidden position
+- (void)hideWithAnimated:(BOOL)animated completion:(dispatch_block_t __nullable)completion;
+
+/// Adds the view managed by the controller as a child of the specified view controller.
+/// - Parameters:
+///     - parent: A parent view controller object that displays FloatingPanelController's view. A container view controller object isn't applicable.
+///     - belowView: Insert the surface view managed by the controller below the specified view. By default, the surface view will be added to the end of the parent list of subviews.
+///     - animated: Pass true to animate the presentation; otherwise, pass false.
+- (void)addPanelToParentViewController:(UIViewController *)parent belowView:(UIView *)belowView animated:(BOOL)animated;
+
+/// Removes the controller and the managed view from its parent view controller
+/// - Parameters:
+///     - animated: Pass true to animate the presentation; otherwise, pass false.
+///     - completion: The block to execute after the view controller is dismissed. This block has no return value and takes no parameters. You may specify nil for this parameter.
+- (void)removePanelFromParentViewController:(UIViewController *)parent animated:(BOOL)animated completion:(dispatch_block_t __nullable)completion;;
+
+- (void)removePanelFromParentWithAnimated:(BOOL)animated completion:(dispatch_block_t __nullable)completion;
+
+/// Moves the position to the specified position.
+/// - Parameters:
+///     - to: Pass a FloatingPanelPosition value to move the surface view to the position.
+///     - animated: Pass true to animate the presentation; otherwise, pass false.
+///     - completion: The block to execute after the view controller has finished moving. This block has no return value and takes no parameters. You may specify nil for this parameter.
+- (void)moveToPosition:(JLFloatingPanelPosition)position animated:(BOOL)animated completion:(dispatch_block_t __nullable)completion;
+
+/// Tracks the specified scroll view to correspond with the scroll.
+///
+/// - Parameters:
+///     - scrollView: Specify a scroll view to continuously and seamlessly work in concert with interactions of the surface view or nil to cancel it.
+- (void)trackWithScrollView:(UIScrollView *)scrollView;
+
+/// Updates the layout object from the delegate and lays out the views managed
+/// by the controller immediately.
+///
+/// This method updates the `FloatingPanelLayout` object from the delegate and
+/// then it calls `layoutIfNeeded()` of the root view to force the view
+/// to update the floating panel's layout immediately. It can be called in an
+/// animation block.
+- (void)updateLayout;
+
+/// Returns the y-coordinate of the point at the origin of the surface view.
+- (CGFloat)originYOfSurfaceForPosition:(JLFloatingPanelPosition)position;
+
+
+@end
+
+@interface UIViewController (Swizzing)
+
+- (void)dismissSwizzling;
 
 @end
 

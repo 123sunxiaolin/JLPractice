@@ -43,6 +43,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface UITraitCollection (Extension)
+
+- (BOOL)shouldUpdateLayoutWithPreviousCollection:(UITraitCollection *)previousCollection;
+
+
+@end
+
 @interface UIVIewExtension : NSObject
 
 @end
