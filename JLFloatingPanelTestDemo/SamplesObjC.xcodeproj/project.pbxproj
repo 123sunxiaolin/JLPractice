@@ -13,8 +13,8 @@
 		545BA70E21BA3217007F7846 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 545BA70D21BA3217007F7846 /* Assets.xcassets */; };
 		545BA71121BA3217007F7846 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545BA70F21BA3217007F7846 /* LaunchScreen.storyboard */; };
 		545BA71421BA3217007F7846 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 545BA71321BA3217007F7846 /* main.m */; };
-		545BA72421BA3867007F7846 /* FloatingPanelAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545BA72321BA3867007F7846 /* FloatingPanelAdapter.swift */; };
 		6016659273E6ED8346BCEC9C /* libPods-SamplesObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67218C97EF32BE2F0416D44C /* libPods-SamplesObjC.a */; };
+		E74062BF23B6033E00A6AC94 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74062BE23B6033E00A6AC94 /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,9 +42,9 @@
 		545BA71221BA3217007F7846 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		545BA71321BA3217007F7846 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		545BA72221BA3867007F7846 /* SamplesObjC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SamplesObjC-Bridging-Header.h"; sourceTree = "<group>"; };
-		545BA72321BA3867007F7846 /* FloatingPanelAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelAdapter.swift; sourceTree = "<group>"; };
 		67218C97EF32BE2F0416D44C /* libPods-SamplesObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SamplesObjC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C401312C40C7BA1FE1F88222 /* Pods-SamplesObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamplesObjC.release.xcconfig"; path = "Pods/Target Support Files/Pods-SamplesObjC/Pods-SamplesObjC.release.xcconfig"; sourceTree = "<group>"; };
+		E74062BE23B6033E00A6AC94 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		F2150C4857B25B96C01AB982 /* Pods-SamplesObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamplesObjC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SamplesObjC/Pods-SamplesObjC.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,7 +90,7 @@
 				545BA70F21BA3217007F7846 /* LaunchScreen.storyboard */,
 				545BA71221BA3217007F7846 /* Info.plist */,
 				545BA71321BA3217007F7846 /* main.m */,
-				545BA72321BA3867007F7846 /* FloatingPanelAdapter.swift */,
+				E74062BE23B6033E00A6AC94 /* File.swift */,
 				545BA72221BA3867007F7846 /* SamplesObjC-Bridging-Header.h */,
 			);
 			path = SamplesObjC;
@@ -212,8 +212,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				545BA70921BA3214007F7846 /* ViewController.m in Sources */,
+				E74062BF23B6033E00A6AC94 /* File.swift in Sources */,
 				545BA71421BA3217007F7846 /* main.m in Sources */,
-				545BA72421BA3867007F7846 /* FloatingPanelAdapter.swift in Sources */,
 				545BA70621BA3214007F7846 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

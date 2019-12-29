@@ -7,7 +7,9 @@
 //
 
 #import "ViewController.h"
+#import <FloatingPanelObjC.h>
 @import FloatingPanelObjC;
+
 
 @interface FloatingPanelMyLayout: NSObject<FloatingPanelLayout>
 @end
