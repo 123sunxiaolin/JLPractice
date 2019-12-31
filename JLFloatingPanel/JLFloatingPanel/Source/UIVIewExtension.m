@@ -36,6 +36,14 @@
 
 @end
 
+@implementation UIView (Extension)
+
+- (CGRect)presentationFrame {
+    return self.layer.presentationLayer.frame;
+}
+
+@end
+
 @implementation UIViewController (Extension)
 
 - (UIEdgeInsets)layoutInsets {
@@ -88,10 +96,27 @@
 @implementation UITraitCollection (Extension)
 
 - (BOOL)shouldUpdateLayoutWithPreviousCollection:(UITraitCollection *)previousCollection {
-    return previousCollection.horizontalSizeClass != self.horizontalSizeClass
-    || previousCollection.verticalSizeClass != self.verticalSizeClass
-    || previousCollection.preferredContentSizeCategory != self.preferredContentSizeCategory
-    || previousCollection.layoutDirection != self.layoutDirection;
+    if (@available(iOS 10.0, *)) {
+        return previousCollection.horizontalSizeClass != self.horizontalSizeClass
+        || previousCollection.verticalSizeClass != self.verticalSizeClass
+        || previousCollection.preferredContentSizeCategory != self.preferredContentSizeCategory
+        || previousCollection.layoutDirection != self.layoutDirection;
+    } else {
+        return previousCollection.horizontalSizeClass != self.horizontalSizeClass
+        || previousCollection.verticalSizeClass != self.verticalSizeClass;
+    }
+}
+
+@end
+
+@implementation UIScrollView (Extension)
+
+- (CGPoint)contentOffsetZero {
+    return CGPointMake(0, 0 - self.contentInset.top);
+}
+
+- (BOOL)isLocked {
+    return !self.showsVerticalScrollIndicator && !self.bounces && self.isDirectionalLockEnabled;
 }
 
 @end

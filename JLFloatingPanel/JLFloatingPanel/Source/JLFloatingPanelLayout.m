@@ -285,11 +285,6 @@
 @property (nonatomic, assign, readonly) CGFloat tipInset;
 @property (nonatomic, assign, readonly) CGFloat hiddenInset;
 
-@property (nonatomic, assign, readonly) CGFloat topY;
-@property (nonatomic, assign, readonly) CGFloat bottomY;
-@property (nonatomic, assign, readonly) CGFloat topMaxY;
-@property (nonatomic, assign, readonly) CGFloat bottomMaxY;
-
 @end
 
 @implementation JLFloatingPanelLayoutAdapter

@@ -40,15 +40,25 @@ JLFloatingPanelBackdropView;
 @property (nonatomic, assign, readonly) JLFloatingPanelPosition topMostState;
 @property (nonatomic, assign, readonly) JLFloatingPanelPosition bottomMostState;
 
+@property (nonatomic, assign, readonly) CGFloat topY;
+@property (nonatomic, assign, readonly) CGFloat bottomY;
+@property (nonatomic, assign, readonly) CGFloat topMaxY;
+@property (nonatomic, assign, readonly) CGFloat bottomMaxY;
+
 @property (nonatomic, copy, readonly) NSSet <NSNumber *>* supportedPositions;
 
 - (void)updateHeight;
 - (BOOL)isVaildWithPosition:(JLFloatingPanelPosition)position;
+- (JLLayoutSegment *)segmentWithPosY:(CGFloat)posY forward:(BOOL)forward;
 
 - (void)activateFixedLayout;
 - (void)activateLayoutWithPosition:(JLFloatingPanelPosition)position;
 - (void)prepareLayoutInViewController:(JLFloatingPanelController *)panelController;
 - (CGFloat)positionYForPosition:(JLFloatingPanelPosition)position;
+
+- (void)updateInteractiveTopConstraintWithDiff:(CGFloat)diff
+                               allowsTopBuffer:(BOOL)allowsTopBuffer
+                                      behavior:(id <JLFloatingPanelBehavior>)behavior;
 
 - (instancetype)initWithSurfaceView:(JLFloatingPanelSurfaceView *)surfaceView
                        backdropView:(JLFloatingPanelBackdropView *)backdropView

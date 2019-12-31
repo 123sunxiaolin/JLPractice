@@ -25,6 +25,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface UIView (Extension)
+
+- (CGRect)presentationFrame;
+
+@end
+
 @interface UIViewController (Extension)
 
 - (UIEdgeInsets)layoutInsets;
@@ -47,6 +53,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)shouldUpdateLayoutWithPreviousCollection:(UITraitCollection *)previousCollection;
 
+@end
+
+@interface UIScrollView (Extension)
+
+- (CGPoint)contentOffsetZero;
+- (BOOL)isLocked;
 
 @end
 
