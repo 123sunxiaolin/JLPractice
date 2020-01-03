@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 @class JLFloatingPanelController,
 JLFloatingPanelSurfaceView,
 JLFloatingPanelBackdropView;
+@protocol JLFloatingPanelBehavior;
+
 @interface JLFloatingPanelLayoutAdapter : NSObject
 
 @property (nonatomic, weak) id <JLFloatingPanelLayout> layout;

@@ -247,26 +247,226 @@
     return NO;
 }
 
+- (void)stopScrollingWithDecelerationAtContentOffset:(CGPoint)contentOffset {
+    // Must use setContentOffset(_:animated) to force-stop deceleration
+    [self.scrollView setContentOffset:contentOffset animated:NO];
+}
+
+- (JLFloatingPanelPosition)targetPositionFromCurrentY:(CGFloat)currentY velocity:(CGPoint)velocity {
+    return JLFloatingPanelPositionHidden;
+}
+
+- (CGFloat)distanceToTargetPosition:(JLFloatingPanelPosition)targetPosition {
+    CGFloat currentY = self.surfaceView.frame.origin.y;
+    CGFloat targetY = [self.layoutAdapter positionYForPosition:targetPosition];
+    return fabs(currentY - targetY);
+}
+
+- (BOOL)shouldStartRemovalAnimationWithVelocityVector:(CGVector)velocityVector {
+    return NO;
+}
+
+- (void)startRemovalAnimationWithVC:(JLFloatingPanelController *)vc velocityVector:(CGVector)velocityVector completion:(dispatch_block_t)completion {
+    
+}
+
+- (void)finishRemovalAnimation {
+    
+}
+
+- (void)startAnimationToTargetPosition:(JLFloatingPanelPosition)targetPosition distance:(CGFloat)distance velocity:(CGPoint)velocity {
+    
+}
+
 #pragma mark - Gesture Handler
 
 - (BOOL)shouldScrollViewHandleTouchWithScrollView:(UIScrollView *)scrollView point:(CGPoint)point velocity:(CGPoint)velocity {
+    // When no scrollView, nothing to handle.
+    if (!self.scrollView) return NO;
+    
+    // For _UISwipeActionPanGestureRecognizer
+    if (self.scrollView.gestureRecognizers) {
+        for (UIGestureRecognizer *gesture in self.scrollView.gestureRecognizers) {
+            @autoreleasepool {
+                if (gesture.state == UIGestureRecognizerStateBegan
+                    || gesture.state == UIGestureRecognizerStateChanged) {
+                    if (gesture != self.scrollView.panGestureRecognizer) {
+                        return YES;
+                    }
+                } else {
+                    continue;
+                }
+            }
+        }
+    }
+    
+    if (!(self.state == self.layoutAdapter.topMostState // When not top most(i.e. .full), don't scroll.
+         && !self.interactionInProgress                 // When interaction already in progress, don't scroll.
+         && self.surfaceView.frame.origin.y == self.layoutAdapter.topY)) {
+        return NO;
+    }
+    
+    // When the current and initial point within grabber area, do scroll.
+    if (CGRectContainsPoint(self.grabberAreaFrame, point)
+        && !CGRectContainsPoint(self.grabberAreaFrame, self.initialLocation)) {
+        return YES;
+    }
+    
+    if (!(CGRectContainsPoint(self.grabberAreaFrame, self.initialLocation) // When initialLocation not in scrollView, don't scroll.
+        && !CGRectContainsPoint(self.grabberAreaFrame, point))) {          // When point within grabber area, don't scroll.
+        return NO;
+    }
+    
+    CGFloat offset = self.scrollView.contentOffset.y - self.scrollView.contentOffsetZero.y;
+    // The zero offset must be excluded because the offset is usually zero
+    // after a panel moves from half/tip to full.
+    if  (offset > 0.0) {
+        return YES;
+    }
+    if (self.scrollView.isDecelerating) {
+        return YES;
+    }
+    if (velocity.y <= 0) {
+        return YES;
+    }
+
     return NO;
 }
 
 - (void)panningBeganWithLocation:(CGPoint)location {
+    // A user interaction does not always start from Began state of the pan gesture
+    // because it can be recognized in scrolling a content in a content view controller.
+    // So here just preserve the current state if needed.
+    NSLog(@"panningBegan -- location =%f", location.y);
     
+    self.initialLocation = location;
+
+    if (self.scrollView) {
+        if (self.state == self.layoutAdapter.topMostState) {
+            if (CGRectContainsPoint(self.grabberAreaFrame, location)) {
+                self.initialScrollOffset = self.scrollView.contentOffset;
+            }
+        } else {
+            self.initialScrollOffset = self.scrollView.contentOffset;
+        }
+    }
 }
 
-- (void)panningChangeWithTranslation:(CGPoint)location {
+- (void)panningChangeWithTranslation:(CGPoint)translation {
     
+    NSLog(@"panningChange -- translation = %f", translation.y);
+    CGFloat preY = self.surfaceView.frame.origin.y;
+    CGFloat dy = translation.y - self.initialTranslationY;
+
+    [self.layoutAdapter updateInteractiveTopConstraintWithDiff:dy
+                                               allowsTopBuffer:[self allowsTopBufferForTranslationY:dy]
+                                                      behavior:self.behavior];
+    
+    CGFloat currentY = self.surfaceView.frame.origin.y;
+    self.backdropView.alpha = [self getBackdropAlphaAtCurrentY:currentY translation:translation];
+    [self preserveContentVCLayoutIfNeeded];
+    
+    if (preY == currentY) return;
+    if (self.viewcontroller) {
+        if ([self.viewcontroller.delegate respondsToSelector:@selector(floatingPanelDidMoveWithFpc:)]) {
+            [self.viewcontroller.delegate floatingPanelDidMoveWithFpc:self.viewcontroller];
+        }
+    }
 }
 
-- (void)panningEndWithTranslation:(CGPoint)location velocity:(CGPoint)velocity {
+- (void)panningEndWithTranslation:(CGPoint)translation velocity:(CGPoint)velocity {
+    NSLog(@"panningEnd -- translation = %f, velocity = %f", translation.y, velocity.y);
     
+    if (self.state == JLFloatingPanelPositionHidden) {
+        NSLog(@"Already hidden");
+        return;
+    }
+    
+    // Projecting the dragging to the scroll dragging or not
+    self.stopScrollDeceleration = self.surfaceView.frame.origin.y > (self.layoutAdapter.topY + (1.0 / self.surfaceView.traitCollection.displayScale));
+    if (self.stopScrollDeceleration) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self stopScrollingWithDecelerationAtContentOffset:self.initialScrollOffset];
+        });
+    }
+    
+    CGFloat currentY = self.surfaceView.frame.origin.y;
+    JLFloatingPanelPosition targetPosition = [self targetPositionFromCurrentY:currentY velocity:velocity];
+    CGFloat distance = [self distanceToTargetPosition:targetPosition];
+    
+    [self endInteractionForTargetPosition:targetPosition];
+    
+    if (self.isRemovalInteractionEnabled && self.isBottomState) {
+        CGVector velocityVector = (distance != 0) ? CGVectorMake(0, MIN(velocity.y/distance, self.behavior.removalVelocity)) : CGVectorMake(0, 0);
+        // `velocityVector` will be replaced by just a velocity(not vector) when FloatingPanelRemovalInteraction will be added.
+        if (self.viewcontroller && [self shouldStartRemovalAnimationWithVelocityVector:velocityVector]) {
+            [self.viewcontroller.delegate floatingPanelDidEndDraggingToRemoveWithFpc:self.viewcontroller
+                                                                            velocity:velocity];
+            CGVector animationVector = CGVectorMake(fabsf(velocityVector.dx), fabsf(velocityVector.dy));
+            __weak typeof(self) weakSelf = self;
+            [self startRemovalAnimationWithVC:self.viewcontroller velocityVector:animationVector completion:^{
+                [weakSelf finishRemovalAnimation];
+            }];
+            return;
+        }
+    }
+    
+    if (self.viewcontroller) {
+        if ([self.viewcontroller.delegate respondsToSelector:@selector(floatingPanelDidEndDraggingWithFpc:velocity:targetPosition:)]) {
+            [self.viewcontroller.delegate floatingPanelDidEndDraggingWithFpc:self.viewcontroller
+                                                                    velocity:velocity
+                                                              targetPosition:targetPosition];
+        }
+    }
+    
+    if (self.scrollView
+        && !self.stopScrollDeceleration
+        && self.surfaceView.frame.origin.y == self.layoutAdapter.topY
+        && targetPosition == self.layoutAdapter.topMostState) {
+        self.state = targetPosition;
+        [self updateLayoutWithToPosition:targetPosition];
+        [self unlockScrollView];
+        return;
+    }
+    
+    // Workaround: Disable a tracking scroll to prevent bouncing a scroll content in a panel animating
+    BOOL isScrollEnabled = self.scrollView.isScrollEnabled;
+    if (self.scrollView
+        && targetPosition != JLFloatingPanelPositionFull) {
+        self.scrollView.scrollEnabled = NO;
+    }
+    
+    [self startAnimationToTargetPosition:targetPosition distance:distance velocity:velocity];
+    
+    if (self.scrollView
+        && targetPosition != JLFloatingPanelPositionFull) {
+        self.scrollView.scrollEnabled = isScrollEnabled;
+    }
+       
 }
 
 
 - (void)startInteractionWithTranslation:(CGPoint)translation location:(CGPoint)location {
+    
+}
+
+- (void)endInteractionForTargetPosition:(JLFloatingPanelPosition)targetPosition {
+    
+}
+
+- (BOOL)allowsTopBufferForTranslationY:(CGFloat)translationY {
+    CGFloat preY = self.surfaceView.frame.origin.y;
+    CGFloat nextY = self.initialFrame.origin.y + translationY;
+    if (self.scrollView
+        && self.scrollView.panGestureRecognizer.state == UIGestureRecognizerStateChanged
+        && preY > 0
+        && preY > nextY) {
+        return NO;
+    }
+    return YES;
+}
+
+- (void)preserveContentVCLayoutIfNeeded {
     
 }
 
@@ -290,7 +490,7 @@
         BOOL belowTop = surfaceMinY > (adapterTopY + (1.0 / self.surfaceView.traitCollection.displayScale));
         CGFloat offset = self.scrollView.contentOffset.y - self.scrollView.contentOffsetZero.y;
         
-        NSLog(@"scroll gesture(\(%@):\(%ld)) --belowTop = %d, interactionInProgress = %d,scroll offset = %f,location = %@, velocity = %@", @(self.state), panGesture.state, belowTop, self.interactionInProgress, offset, NSStringFromCGPoint(location), NSStringFromCGPoint(velocity));
+        NSLog(@"scroll gesture(\(%@):\(%ld)) --belowTop = %d, interactionInProgress = %d,scroll offset = %f,location = %@, velocity = %@", @(self.state), (long)panGesture.state, belowTop, self.interactionInProgress, offset, NSStringFromCGPoint(location), NSStringFromCGPoint(velocity));
         
         if (belowTop) {
             // Scroll offset pinning
