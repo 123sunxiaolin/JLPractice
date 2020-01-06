@@ -42,6 +42,16 @@
     return self.layer.presentationLayer.frame;
 }
 
+- (void)disableAutoLayout {
+    CGRect rect = self.frame;
+    self.translatesAutoresizingMaskIntoConstraints = YES;
+    self.frame = rect;
+}
+
+- (void)enableAutoLayout {
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+}
+
 @end
 
 @implementation UIViewController (Extension)

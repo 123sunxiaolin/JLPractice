@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIView (Extension)
 
 - (CGRect)presentationFrame;
+- (void)disableAutoLayout;
+- (void)enableAutoLayout;
 
 @end
 

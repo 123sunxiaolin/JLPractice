@@ -53,6 +53,9 @@
 
 @property (nonatomic, assign, readonly) CGRect grabberAreaFrame;
 
+@property (nonatomic, assign) BOOL disabledBottomAutoLayout;
+@property (nonatomic, strong) NSMutableSet <NSLayoutConstraint *> *disabledAutoLayoutItems;
+
 @end
 
 @implementation JLFloatingPanelCore
@@ -153,7 +156,8 @@
     self.scrollBouncable = NO;
     self.scrollIndictorVisible = NO;
     
-    
+    self.disabledBottomAutoLayout = NO;
+    self.disabledAutoLayoutItems = [NSMutableSet set];
     
     
 }
@@ -466,8 +470,68 @@
     return YES;
 }
 
+// Prevent stretching a view having a constraint to SafeArea.bottom in an overflow
+// from the full position because SafeArea is global in a screen.
 - (void)preserveContentVCLayoutIfNeeded {
     
+    if (!self.viewcontroller
+        || self.viewcontroller.contentMode == JLContentModeFitToBounds) {
+        return;
+    }
+    
+    // Must include topY
+    if (self.surfaceView.frame.origin.y <= self.layoutAdapter.topY) {
+        if (!self.disabledBottomAutoLayout) {
+            [self.disabledAutoLayoutItems removeAllObjects];
+            
+            for (NSLayoutConstraint *constraint in self.viewcontroller.view.constraints) {
+                @autoreleasepool {
+                    id oneContraint = self.viewcontroller.layoutGuide.bottomAnchor;
+                    if (@available(iOS 10.0, *)) {
+                        if (oneContraint == constraint.firstAnchor) {
+                            [(UIView *)constraint.secondItem disableAutoLayout];
+                            constraint.active = NO;
+                            [self.disabledAutoLayoutItems addObject:constraint];
+                        } else if (oneContraint == constraint.secondAnchor) {
+                            [(UIView *)constraint.firstItem disableAutoLayout];
+                            constraint.active = NO;
+                            [self.disabledAutoLayoutItems addObject:constraint];
+                        } else {
+                            break;
+                        }
+                    } else {
+                        // Fallback on earlier versions
+#pragma warning -- todo
+                    }
+                }
+            }
+        }
+        self.disabledBottomAutoLayout = YES;
+    } else {
+        if (self.disabledBottomAutoLayout) {
+            for (NSLayoutConstraint *constraint in self.disabledAutoLayoutItems) {
+                @autoreleasepool {
+                    id oneContraint = self.viewcontroller.layoutGuide.bottomAnchor;
+                    if (@available(iOS 10.0, *)) {
+                        if (oneContraint == constraint.firstAnchor) {
+                            [(UIView *)constraint.secondItem enableAutoLayout];
+                            constraint.active = YES;
+                        } else if (oneContraint == constraint.secondAnchor) {
+                            [(UIView *)constraint.firstItem enableAutoLayout];
+                            constraint.active = YES;
+                        } else {
+                            break;
+                        }
+                    } else {
+                        // Fallback on earlier versions
+#pragma warning -- todo
+                    }
+                }
+            }
+            [self.disabledAutoLayoutItems removeAllObjects];
+        }
+        self.disabledBottomAutoLayout = YES;
+    }
 }
 
 
