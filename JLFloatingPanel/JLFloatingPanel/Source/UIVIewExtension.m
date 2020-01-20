@@ -52,6 +52,12 @@
     self.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
++ (void)performWithLinearWithStartTime:(NSTimeInterval)startTime relativeDuration:(NSTimeInterval)relativeDuration animations:(dispatch_block_t)animations {
+    [UIView animateKeyframesWithDuration:0 delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
+        [UIView addKeyframeWithRelativeStartTime:startTime relativeDuration:relativeDuration animations:animations];
+    } completion:nil];
+}
+
 @end
 
 @implementation UIViewController (Extension)

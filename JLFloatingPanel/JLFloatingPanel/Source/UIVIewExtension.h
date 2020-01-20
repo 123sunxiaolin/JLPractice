@@ -31,6 +31,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)disableAutoLayout;
 - (void)enableAutoLayout;
 
++ (void)performWithLinearWithStartTime:(NSTimeInterval)startTime
+                      relativeDuration:(NSTimeInterval)relativeDuration
+                            animations:(dispatch_block_t)animations;
+
 @end
 
 @interface UIViewController (Extension)

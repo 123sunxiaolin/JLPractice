@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 // MUST be a weak reference to prevent UI freeze on the presentation modally
 @property (nonatomic, weak) JLFloatingPanelController *viewcontroller;
 
-@property (nonatomic, strong, nullable) UIViewPropertyAnimator *animator;
+@property (nonatomic, strong, nullable) UIViewPropertyAnimator *animator API_AVAILABLE(ios(10.0));
 
 @property (nonatomic, strong, readonly) JLFloatingPanelSurfaceView *surfaceView;
 @property (nonatomic, strong, readonly) JLFloatingPanelBackdropView *backdropView;

@@ -231,11 +231,29 @@
 }
 
 - (void)lockScrollView {
+    if (!self.scrollView) return;
+    if (self.scrollView.isLocked) {
+        NSLog(@"Already scroll locked.");
+        return;
+    }
+     NSLog(@"lock scroll view");
     
+    self.scrollBouncable = self.scrollView.bounces;
+    self.scrollIndictorVisible = self.scrollView.showsVerticalScrollIndicator;
+    
+    self.scrollView.directionalLockEnabled = YES;
+    self.scrollView.bounces = NO;
+    self.scrollView.showsVerticalScrollIndicator = NO;
 }
 
 - (void)unlockScrollView {
     
+    if (self.scrollView.isLocked) {
+        NSLog(@"will unlock scroll view");
+        self.scrollView.directionalLockEnabled = NO;
+        self.scrollView.bounces = self.scrollBouncable;
+        self.scrollView.showsVerticalScrollIndicator = self.scrollIndictorVisible;
+    }
 }
 
 - (void)tearDownActiveInteraction {
@@ -257,7 +275,63 @@
 }
 
 - (JLFloatingPanelPosition)targetPositionFromCurrentY:(CGFloat)currentY velocity:(CGPoint)velocity {
-    return JLFloatingPanelPositionHidden;
+    if (!self.viewcontroller) return self.state;
+    
+    NSSet *supportedPositions = self.layoutAdapter.supportedPositions;
+    if (supportedPositions.count <= 1) {
+        return self.state;
+    }
+        
+    NSArray *sourcePositions = [[NSArray alloc] initWithArray:supportedPositions.allObjects];
+    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:nil ascending:YES]];
+    NSArray *sortedPositions = [sourcePositions sortedArrayUsingDescriptors:sortDesc];
+    
+    // Projection
+    CGFloat decelerationRate = [self.behavior momentumProjectionRateWithFpc:self.viewcontroller];
+    CGFloat baseY = fabs([self.layoutAdapter positionYForPosition:self.layoutAdapter.bottomMostState] - [self.layoutAdapter positionYForPosition:self.layoutAdapter.topMostState]);
+    CGFloat vecY = velocity.y / baseY;
+    CGFloat pY = [self projectWithInitialVelocity:vecY decelerationRate:decelerationRate] * baseY + currentY;
+    CGFloat forwardY = velocity.y == 0 ? (currentY - [self.layoutAdapter positionYForPosition:self.state] > 0) : velocity.y > 0;
+    JLLayoutSegment *segment = [self.layoutAdapter segmentWithPosY:pY forward:forwardY];
+    
+    JLFloatingPanelPosition fromPos;
+    JLFloatingPanelPosition toPos;
+    
+    JLFloatingPanelPosition lowerPos = (JLFloatingPanelPosition)[(segment.lower ? segment.lower : sortedPositions.firstObject) integerValue];
+    JLFloatingPanelPosition upperPos = (JLFloatingPanelPosition)[(segment.upper ? segment.upper : sortedPositions.lastObject) integerValue];
+    fromPos = forwardY ? lowerPos : upperPos;
+    toPos = forwardY ? upperPos : lowerPos;
+    
+    if (![self.behavior shouldProjectMomentumWithFpc:self.viewcontroller proposedTargetPosition:toPos]) {
+        JLLayoutSegment *oneSegment = [self.layoutAdapter segmentWithPosY:currentY forward:forwardY];
+        JLFloatingPanelPosition lowerPos = (JLFloatingPanelPosition)[(oneSegment.lower ? oneSegment.lower : sortedPositions.firstObject) integerValue];
+        JLFloatingPanelPosition upperPos = (JLFloatingPanelPosition)[(oneSegment.upper ? oneSegment.upper : sortedPositions.lastObject) integerValue];
+        // Equate the segment out of {top,bottom} most state to the {top,bottom} most segment
+        if (lowerPos == upperPos) {
+            if (forwardY) {
+                upperPos = [JLFloatingPanelPositionPresenter nextPositionWithPosition:lowerPos inPositions:sortedPositions];
+            } else {
+                lowerPos = [JLFloatingPanelPositionPresenter previousPositionWithPosition:upperPos inPositions:sortedPositions];
+            }
+        }
+        fromPos = forwardY ? lowerPos : upperPos;
+        toPos = forwardY ? upperPos : lowerPos;
+        // Block a projection to a segment over the next from the current segment
+        // (= Trim pY with the current segment)
+        
+        if (forwardY) {
+            JLFloatingPanelPosition pos = [JLFloatingPanelPositionPresenter nextPositionWithPosition:toPos inPositions:sortedPositions];
+            pY = MAX(MIN(pY, [self.layoutAdapter positionYForPosition:pos]), [self.layoutAdapter positionYForPosition:fromPos]);
+        } else {
+             JLFloatingPanelPosition pos = [JLFloatingPanelPositionPresenter previousPositionWithPosition:toPos inPositions:sortedPositions];
+            pY = MAX(MIN(pY, [self.layoutAdapter positionYForPosition:fromPos]), [self.layoutAdapter positionYForPosition:pos]);
+        }
+    }
+    
+    // Redirection
+    CGFloat redirectionalProgress = MAX(MIN([self.behavior redirectionalProgressWithFpc:self.viewcontroller fromPosition:fromPos toPosition:toPos], 1.0), 0);
+    CGFloat progress = fabs(pY - [self.layoutAdapter positionYForPosition:fromPos]) / fabs([self.layoutAdapter positionYForPosition:fromPos] - [self.layoutAdapter positionYForPosition:toPos]);
+    return progress > redirectionalProgress ? toPos : fromPos;
 }
 
 - (CGFloat)distanceToTargetPosition:(JLFloatingPanelPosition)targetPosition {
@@ -266,20 +340,138 @@
     return fabs(currentY - targetY);
 }
 
+// Distance travelled after decelerating to zero velocity at a constant rate.
+// Refer to the slides p176 of [Designing Fluid Interfaces](https://developer.apple.com/videos/play/wwdc2018/803/)
+- (CGFloat)projectWithInitialVelocity:(CGFloat)velocity decelerationRate:(CGFloat)rate {
+    return (velocity / 1000.0) * rate / (1.0 - rate);
+}
+
 - (BOOL)shouldStartRemovalAnimationWithVelocityVector:(CGVector)velocityVector {
+    CGFloat posY = [self.layoutAdapter positionYForPosition:self.state];
+    CGFloat currentY = self.surfaceView.frame.origin.y;
+    CGFloat hiddenY = [self.layoutAdapter positionYForPosition:JLFloatingPanelPositionHidden];
+    CGFloat vth = self.behavior.removalVelocity;
+    CGFloat pth = MAX(MIN(self.behavior.removalProgress, 1.0), 0.0);
+    
+    CGFloat num = currentY - posY;
+    CGFloat den = hiddenY - posY;
+    
+    if (num >= 0
+        && den != 0
+        && (num / den >= pth || velocityVector.dy == vth)) {
+        return YES;
+    }
     return NO;
 }
 
 - (void)startRemovalAnimationWithVC:(JLFloatingPanelController *)vc velocityVector:(CGVector)velocityVector completion:(dispatch_block_t)completion {
-    
+    if (@available(iOS 10.0, *)) {
+        UIViewPropertyAnimator *animator = [self.behavior removalInteractionAnimatorWithFpc:self.viewcontroller
+                                                                                   velocity:velocityVector];
+        [animator addAnimations:^{
+            self.state = JLFloatingPanelPositionHidden;
+            [self updateLayoutWithToPosition:JLFloatingPanelPositionHidden];
+        }];
+        
+        [animator addCompletion:^(UIViewAnimatingPosition finalPosition) {
+            self.animator = nil;
+            if (completion) {
+                completion();
+            }
+        }];
+        self.animator = animator;
+        [animator startAnimation];
+        
+    } else {
+        // Fallback on earlier versions
+#pragma mark - TODO --
+    }
 }
 
 - (void)finishRemovalAnimation {
-    
+    __weak typeof(self) weakSelf = self;
+    [self.viewcontroller dismissViewControllerAnimated:NO completion:^{
+        if (weakSelf.viewcontroller.delegate
+            && [weakSelf.viewcontroller.delegate respondsToSelector:@selector(floatingPanelDidEndRemoveWithFpc:)]) {
+            [weakSelf.viewcontroller.delegate floatingPanelDidEndRemoveWithFpc:weakSelf.viewcontroller];
+        }
+    }];
 }
 
 - (void)startAnimationToTargetPosition:(JLFloatingPanelPosition)targetPosition distance:(CGFloat)distance velocity:(CGPoint)velocity {
+    NSLog(@"startAnimation to %@ -- distance = %f, velocity = %f", @(targetPosition), distance, velocity.y);
+    if (!self.viewcontroller) return;
     
+    self.isDecelerating = YES;
+    
+    if (self.viewcontroller.delegate
+        && [self.viewcontroller.delegate respondsToSelector:@selector(floatingPanelWillBeginDeceleratingWithFpc:)]) {
+        [self.viewcontroller.delegate floatingPanelWillBeginDeceleratingWithFpc:self.viewcontroller];
+    }
+    
+    CGVector velocityVector = (distance != 0) ? CGVectorMake(0, fabs(velocity.y)/distance) : CGVectorMake(0, 0);
+    if (@available(iOS 10.0, *)) {
+        UIViewPropertyAnimator *animator = [self.behavior interactionAnimatorWithFpc:self.viewcontroller
+                                                                      targetPosition:targetPosition
+                                                                            velocity:velocityVector];
+        __weak typeof(animator) weakAnimator = animator;
+        [animator addAnimations:^{
+            self.state = targetPosition;
+            if (weakAnimator.isInterruptible) {
+                if (self.viewcontroller.contentMode == JLContentModeFitToBounds) {
+                    [UIView performWithLinearWithStartTime:0 relativeDuration:0.75 animations:^{
+                        [self.layoutAdapter activateFixedLayout];
+                        [self.surfaceView.superview layoutIfNeeded];
+                    }];
+                } else {
+                    [self.layoutAdapter activateFixedLayout];
+                }
+            } else {
+                [self.layoutAdapter activateFixedLayout];
+            }
+            [self.layoutAdapter activateLayoutWithPosition:targetPosition];
+        }];
+        
+        [animator addCompletion:^(UIViewAnimatingPosition finalPosition) {
+            // Prevent calling `finishAnimation(at:)` by the old animator whose `isInterruptive` is false
+            // when a new animator has been started after the old one is interrupted.
+            if (self.animator == weakAnimator) {
+                [self finishAnimationAtTargetPosition:targetPosition];
+            }
+        }];
+        self.animator = animator;
+        [animator startAnimation];
+        
+    } else {
+        // Fallback on earlier versions
+#pragma mark - TODO ---
+    }
+}
+
+- (void)finishAnimationAtTargetPosition:(JLFloatingPanelPosition)targetPosition {
+    NSLog(@"finishAnimation to %@", @(targetPosition));
+    
+    self.isDecelerating = NO;
+    if (@available(iOS 10.0, *)) {
+        self.animator = nil;
+    } else {
+        // Fallback on earlier versions
+    }
+    
+    if (self.viewcontroller.delegate
+        && [self.viewcontroller.delegate respondsToSelector:@selector(floatingPanelDidEndDeceleratingWithFpc:)]) {
+        [self.viewcontroller.delegate floatingPanelDidEndDeceleratingWithFpc:self.viewcontroller];
+    }
+    
+    if (self.scrollView) {
+        NSLog(@"finishAnimation -- scroll offset = %@", NSStringFromCGPoint(self.scrollView.contentOffset));
+    }
+    self.stopScrollDeceleration = NO;
+    NSLog(@"finishAnimation -- state = %@ surface.minY = %f topY = %f", @(self.state), self.surfaceView.presentationFrame.origin.y, [self.layoutAdapter topY]);
+    if (self.state == self.layoutAdapter.topMostState
+        && fabs(self.surfaceView.presentationFrame.origin.y - self.layoutAdapter.topY) <= 1.0) {
+        [self unlockScrollView];
+    }
 }
 
 #pragma mark - Gesture Handler
@@ -449,13 +641,47 @@
        
 }
 
-
 - (void)startInteractionWithTranslation:(CGPoint)translation location:(CGPoint)location {
+    /* Don't lock a scroll view to show a scroll indicator after hitting the top */
+    NSLog(@"startInteraction  -- translation = %f, location = %f", translation.y, location.y);
+    if (self.interactionInProgress) return;
+    CGPoint offset = CGPointZero;
     
+    self.initialFrame = self.surfaceView.frame;
+    if (self.state == self.layoutAdapter.topMostState && self.scrollView) {
+        if (CGRectContainsPoint(self.grabberAreaFrame, location)) {
+            self.initialScrollOffset = self.scrollView.contentOffset;
+        } else {
+            // Fit the surface bounds to a scroll offset content by startInteraction(at:offset:)
+            offset = CGPointMake(-self.scrollView.contentOffset.x, -self.scrollView.contentOffset.y);
+            self.initialScrollOffset = self.scrollView.contentOffsetZero;
+        }
+        NSLog(@"initial scroll offset --%@", NSStringFromCGPoint(self.initialScrollOffset));
+    }
+    self.initialTranslationY = translation.y;
+    
+    if (self.viewcontroller.delegate
+        && [self.viewcontroller.delegate respondsToSelector:@selector(floatingPanelWillBeginDraggingWithFpc:)]) {
+        [self.viewcontroller.delegate floatingPanelWillBeginDraggingWithFpc:self.viewcontroller];
+    }
+    [self.layoutAdapter startInteractionWithState:self.state offSet:offset];
+    
+    self.interactionInProgress = YES;
+    [self lockScrollView];
 }
 
 - (void)endInteractionForTargetPosition:(JLFloatingPanelPosition)targetPosition {
+    NSLog(@"endInteraction to %@", @(targetPosition));
+    if (self.scrollView) {
+        NSLog(@"endInteraction -- scroll offset = %@", NSStringFromCGPoint(self.scrollView.contentOffset));
+    }
+    self.interactionInProgress = NO;
     
+    // Prevent to keep a scroll view indicator visible at the half/tip position
+    if (targetPosition != self.layoutAdapter.topMostState) {
+        [self lockScrollView];
+    }
+    [self.layoutAdapter endInteractionWithPosition:targetPosition];
 }
 
 - (BOOL)allowsTopBufferForTranslationY:(CGFloat)translationY {

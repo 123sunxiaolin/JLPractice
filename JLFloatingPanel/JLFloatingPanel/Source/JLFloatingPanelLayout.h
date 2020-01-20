@@ -57,6 +57,8 @@ JLFloatingPanelBackdropView;
 - (void)activateLayoutWithPosition:(JLFloatingPanelPosition)position;
 - (void)prepareLayoutInViewController:(JLFloatingPanelController *)panelController;
 - (CGFloat)positionYForPosition:(JLFloatingPanelPosition)position;
+- (void)startInteractionWithState:(JLFloatingPanelPosition)position offSet:(CGPoint)offset;
+- (void)endInteractionWithPosition:(JLFloatingPanelPosition)position;
 
 - (void)updateInteractiveTopConstraintWithDiff:(CGFloat)diff
                                allowsTopBuffer:(BOOL)allowsTopBuffer
