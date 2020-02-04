@@ -33,8 +33,13 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [super touchesBegan:touches withEvent:event];
-    if (self.floatingPanel.animator) {
-        self.state = UIGestureRecognizerStateBegan;
+    if (@available(iOS 10.0, *)) {
+        if (self.floatingPanel.animator) {
+            self.state = UIGestureRecognizerStateBegan;
+        }
+    } else {
+        // Fallback on earlier versions
+#pragma mark --TODO
     }
 }
 
@@ -158,8 +163,6 @@
     
     self.disabledBottomAutoLayout = NO;
     self.disabledAutoLayoutItems = [NSMutableSet set];
-    
-    
 }
 
 - (void)moveFromPosition:(JLFloatingPanelPosition)fromPosition toPosition:(JLFloatingPanelPosition)toPosition animated:(BOOL)animated completion:(dispatch_block_t)completion {
@@ -384,7 +387,7 @@
         
     } else {
         // Fallback on earlier versions
-#pragma mark - TODO --
+#pragma mark - TODO
     }
 }
 
@@ -436,7 +439,7 @@
             // Prevent calling `finishAnimation(at:)` by the old animator whose `isInterruptive` is false
             // when a new animator has been started after the old one is interrupted.
             if (self.animator == weakAnimator) {
-                [self finishAnimationAtTargetPosition:targetPosition];
+                [self endAnimationWithFinished:finalPosition == UIViewAnimatingPositionEnd];
             }
         }];
         self.animator = animator;
@@ -448,6 +451,33 @@
     }
 }
 
+- (void)endAnimationWithFinished:(BOOL)finished {
+    self.isDecelerating = NO;
+    if (@available(iOS 10.0, *)) {
+        self.animator = nil;
+    } else {
+        // Fallback on earlier versions
+    }
+    
+    if (self.viewcontroller.delegate
+        && [self.viewcontroller.delegate respondsToSelector:@selector(floatingPanelDidEndDeceleratingWithFpc:)]) {
+        [self.viewcontroller.delegate floatingPanelDidEndDeceleratingWithFpc:self.viewcontroller];
+    }
+    
+    if (self.scrollView) {
+        NSLog(@"finishAnimation -- scroll offset = %@", NSStringFromCGPoint(self.scrollView.contentOffset));
+    }
+    self.stopScrollDeceleration = NO;
+    NSLog(@"finishAnimation -- state = %@ surface.minY = %f topY = %f", @(self.state), self.surfaceView.presentationFrame.origin.y, [self.layoutAdapter topY]);
+    if (finished
+        &&self.state == self.layoutAdapter.topMostState
+        && fabs(self.surfaceView.presentationFrame.origin.y - self.layoutAdapter.topY) <= 1.0) {
+        [self unlockScrollView];
+    }
+}
+
+
+/// no-use，please use ·endAnimationWithFinished· to replace.
 - (void)finishAnimationAtTargetPosition:(JLFloatingPanelPosition)targetPosition {
     NSLog(@"finishAnimation to %@", @(targetPosition));
     
@@ -598,7 +628,7 @@
         if (self.viewcontroller && [self shouldStartRemovalAnimationWithVelocityVector:velocityVector]) {
             [self.viewcontroller.delegate floatingPanelDidEndDraggingToRemoveWithFpc:self.viewcontroller
                                                                             velocity:velocity];
-            CGVector animationVector = CGVectorMake(fabsf(velocityVector.dx), fabsf(velocityVector.dy));
+            CGVector animationVector = CGVectorMake(fabs(velocityVector.dx), fabs(velocityVector.dy));
             __weak typeof(self) weakSelf = self;
             [self startRemovalAnimationWithVC:self.viewcontroller velocityVector:animationVector completion:^{
                 [weakSelf finishRemovalAnimation];
@@ -652,9 +682,12 @@
         if (CGRectContainsPoint(self.grabberAreaFrame, location)) {
             self.initialScrollOffset = self.scrollView.contentOffset;
         } else {
-            // Fit the surface bounds to a scroll offset content by startInteraction(at:offset:)
-            offset = CGPointMake(-self.scrollView.contentOffset.x, -self.scrollView.contentOffset.y);
             self.initialScrollOffset = self.scrollView.contentOffsetZero;
+            // Fit the surface bounds to a scroll offset content by startInteraction(at:offset:)
+            CGFloat scrollOffsetY = self.scrollView.contentOffset.y - self.scrollView.contentOffsetZero.y;
+            if (scrollOffsetY < 0) {
+                offset = CGPointMake(-self.scrollView.contentOffset.x, -scrollOffsetY);
+            }
         }
         NSLog(@"initial scroll offset --%@", NSStringFromCGPoint(self.initialScrollOffset));
     }
@@ -756,15 +789,14 @@
             }
             [self.disabledAutoLayoutItems removeAllObjects];
         }
-        self.disabledBottomAutoLayout = YES;
+        self.disabledBottomAutoLayout = NO;
     }
 }
-
 
 #pragma mark - Layout update
 - (void)updateLayoutWithToPosition:(JLFloatingPanelPosition)position {
     [self.layoutAdapter activateFixedLayout];
-    [self.layoutAdapter activateLayoutWithPosition:position];
+    [self.layoutAdapter activateInteractiveLayoutWithPosition:position];
 }
 
 #pragma mark - Action
@@ -802,10 +834,14 @@
             if (self.interactionInProgress) {
                 [self lockScrollView];
             } else {
-                if (self.state == self.layoutAdapter.topMostState
-                    && self.animator == nil
-                    && offset > 0 && velocity.y < 0) {
-                    [self unlockScrollView];
+                if (@available(iOS 10.0, *)) {
+                    if (self.state == self.layoutAdapter.topMostState
+                        && self.animator == nil
+                        && offset > 0 && velocity.y < 0) {
+                        [self unlockScrollView];
+                    }
+                } else {
+#pragma mark - TODO1
                 }
             }
         } else {
@@ -852,26 +888,31 @@
             return;
         }
         
-        if (self.animator) {
-            if (self.surfaceView.presentationFrame.origin.y < self.layoutAdapter.topMaxY) return;
-            if (self.animator.interruptible) {
-                [self.animator stopAnimation:NO];
-                // A user can stop a panel at the nearest Y of a target position so this fine-tunes
-                // the a small gap between the presentation layer frame and model layer frame
-                // to unlock scroll view properly at finishAnimation(at:)
-                if (fabs(self.surfaceView.frame.origin.y - self.layoutAdapter.topY) <= 1.0) {
-                    CGRect rect = self.surfaceView.frame;
-                    rect.origin.y = self.layoutAdapter.topY;
-                    self.surfaceView.frame = rect;
-                }
-                if (@available(iOS 10.0, *)) {
-                    [self.animator finishAnimationAtPosition:UIViewAnimatingPositionCurrent];
+        if (@available(iOS 10.0, *)) {
+            if (self.animator) {
+                if (self.surfaceView.presentationFrame.origin.y < self.layoutAdapter.topMaxY) return;
+                if (self.animator.interruptible) {
+                    [self.animator stopAnimation:NO];
+                    // A user can stop a panel at the nearest Y of a target position so this fine-tunes
+                    // the a small gap between the presentation layer frame and model layer frame
+                    // to unlock scroll view properly at finishAnimation(at:)
+                    if (fabs(self.surfaceView.frame.origin.y - self.layoutAdapter.topY) <= 1.0) {
+                        CGRect rect = self.surfaceView.frame;
+                        rect.origin.y = self.layoutAdapter.topY;
+                        self.surfaceView.frame = rect;
+                    }
+                    if (@available(iOS 10.0, *)) {
+                        [self.animator finishAnimationAtPosition:UIViewAnimatingPositionCurrent];
+                    } else {
+                        // Fallback on earlier versions
+                    }
                 } else {
-                    // Fallback on earlier versions
+                    self.animator = nil;
                 }
-            } else {
-                self.animator = nil;
             }
+        } else {
+#pragma mark - TODO1
+            
         }
         
         if (self.panGestureRecognizer.state == UIGestureRecognizerStateBegan) {
@@ -910,8 +951,6 @@
                 break;
         }
     }
-    
-    
 }
 
 - (void)handleBackdropWithTapGesture:(UITapGestureRecognizer *)tapGesture {
@@ -924,6 +963,20 @@
 }
 
 #pragma mark - Getters
+- (void)setScrollView:(UIScrollView *)scrollView {
+    [_scrollView.panGestureRecognizer removeTarget:self action:nil];
+    _scrollView = scrollView;
+    [_scrollView.panGestureRecognizer addTarget:self action:@selector(handlePanGesture:)];
+}
+
+- (void)setState:(JLFloatingPanelPosition)state {
+    _state = state;
+    if (self.viewcontroller.delegate
+        && [self.viewcontroller.delegate respondsToSelector:@selector(floatingPanelDidChangePositionWithFpc:)]) {
+        [self.viewcontroller.delegate floatingPanelDidChangePositionWithFpc:self.viewcontroller];
+    }
+}
+
 - (BOOL)isBottomState {
     NSInteger count = 0;
     for (NSNumber *num in self.layoutAdapter.supportedPositions) {
